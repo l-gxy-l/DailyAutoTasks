@@ -1,9 +1,12 @@
 name: Create Release (Windows x64)
 
 on:
-  push:
-    tags:
-      - 'v*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: '版本号（如 1.0.0）'
+        required: true
+        default: '1.0.0'
 
 jobs:
   build:
@@ -12,16 +15,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Create archive (exclude folder)
+      - name: Create archive (exclude 测试 folder)
         run: |
-          git archive --format=zip --output=DailyAutoTasks-${{ github.ref_name }}-windows-x64.zip HEAD :测试 :audioMute
+          git archive --format=zip --output=DailyAutoTasks-v${{ github.event.inputs.version }}-windows-x64.zip HEAD :测试
         shell: bash
 
       - name: Create Release and Upload Asset
         uses: softprops/action-gh-release@v2
         with:
-          name: DailyAutoTasks ${{ github.ref_name }}
-          files: DailyAutoTasks-${{ github.ref_name }}-windows-x64.zip
+          name: DailyAutoTasks v${{ github.event.inputs.version }}
+          tag_name: v${{ github.event.inputs.version }}
+          files: DailyAutoTasks-v${{ github.event.inputs.version }}-windows-x64.zip
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
