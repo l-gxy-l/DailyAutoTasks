@@ -1,4 +1,3 @@
-yaml
 name: Create Release (Windows x64)
 
 on:
