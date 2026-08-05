@@ -1,0 +1,28 @@
+yaml
+name: Create Release (Windows x64)
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create archive (exclude folder)
+        run: |
+          git archive --format=zip --output=DailyAutoTasks-${{ github.ref_name }}-windows-x64.zip HEAD :测试 :audioMute
+        shell: bash
+
+      - name: Create Release and Upload Asset
+        uses: softprops/action-gh-release@v2
+        with:
+          name: DailyAutoTasks ${{ github.ref_name }}
+          files: DailyAutoTasks-${{ github.ref_name }}-windows-x64.zip
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
