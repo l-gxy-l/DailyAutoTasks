@@ -1,35 +1,26 @@
-::[Bat To Exe Converter]
-::
-::YAwzoRdxOk+EWAnk
-::fBw5plQjdG8=
-::YAwzuBVtJxjWCl3EqQJgSA==
-::ZR4luwNxJguZRRnk
-::Yhs/ulQjdF+5
-::cxAkpRVqdFKZSzk=
-::cBs/ulQjdF+5
-::ZR41oxFsdFKZSDk=
-::eBoioBt6dFKZSDk=
-::cRo6pxp7LAbNWATEpCI=
-::egkzugNsPRvcWATEpCI=
-::dAsiuh18IRvcCxnZtBJQ
-::cRYluBh/LU+EWAnk
-::YxY4rhs+aU+JeA==
-::cxY6rQJ7JhzQF1fEqQJQ
-::ZQ05rAF9IBncCkqN+0xwdVs0
-::ZQ05rAF9IAHYFVzEqQJQ
-::eg0/rx1wNQPfEVWB+kM9LVsJDGQ=
-::fBEirQZwNQPfEVWB+kM9LVsJDGQ=
-::cRolqwZ3JBvQF1fEqQJQ
-::dhA7uBVwLU+EWDk=
-::YQ03rBFzNR3SWATElA==
-::dhAmsQZ3MwfNWATElA==
-::ZQ0/vhVqMQ3MEVWAtB9wSA==
-::Zg8zqx1/OA3MEVWAtB9wSA==
-::dhA7pRFwIByZRRnk
-::Zh4grVQjdCqDJH6F+UcjFDlRWBCHLkyTOj37Im0LIG9tasnGj2fVubPIzrueAfUX40qqcI4otg==
-::YB416Ek+ZW8=
-::
-::
-::978f952a14a936cc963da21a135fa983
-chcp 65001
-net stop AudioSrv
+@echo off
+chcp 65001 >nul
+setlocal enabledelayedexpansion
+cd /d "%~dp0"
+
+if not exist ".\config\paths.ini" (
+    echo 文件不存在！
+) else (
+    echo 文件存在
+)
+
+echo 正在查找配置...
+findstr /b "path_bgi=" ".\config\paths.ini"
+if %errorlevel% neq 0 (
+    echo 未找到 path_bgi= 配置行！
+    pause
+    exit /b
+)
+
+for /f "tokens=2 delims==" %%a in ('findstr /b "path_maaend=" ".\config\paths.ini"') do set "PATH_MAAEND=%%a"
+echo kkk 路径=[!PATH_MAAEND!]
+
+
+
+
+pause
