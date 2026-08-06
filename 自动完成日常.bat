@@ -44,7 +44,7 @@ call "!PATH_MARCH7TH!" -S main
 REM II注意II".\tasks\HSR\endHSR.bat"是填在M7th软件"程序-任务完成后运行脚本"里的
 REM -----------------------EnF任务------------------------------
 call .\tasks\EnF\startMaaEnd.bat
-REM II注意II".\tasks\EnF\endArkE.bat"是填在MaaEnd软件任务列表最后的"自定义程序-程序路径"里的
+call .\tasks\EnF\endArkE.bat
 REM -----------------------MFW任务------------------------------
 start "" ".\tasks\MFW\startMFW-FOS.bat"
 REM 调节亮度为50
