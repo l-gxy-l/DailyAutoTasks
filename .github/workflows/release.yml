@@ -17,9 +17,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v5
 
-      - name: Create archive (exclude 测试 folder)
+      - name: Create archive (exclude folder)
         run: |
-          git archive --format=zip --output=DailyAutoTasks-v${{ github.event.inputs.version }}-windows-x64.zip HEAD :测试 :audioMute
+          git archive --format=zip --output=DailyAutoTasks-v${{ github.event.inputs.version }}-windows-x64.zip HEAD
         shell: bash
 
       - name: Create Release and Upload Asset
