@@ -1,3 +1,4 @@
+@echo off
 REM 设置代码页为UTF-8，启用延迟扩展，检测管理员权限
 chcp 65001
 setlocal enabledelayedexpansion
@@ -33,7 +34,7 @@ taskkill /IM msedge.exe
 REM MAA
 for /f "tokens=2 delims==" %%a in ('findstr /b "path_maa=" ".\config\paths.ini"') do set "PATH_MAA=%%a"
 start "" "!PATH_MAA!"
-timeout /t 15
+timeout /t 30
 REM -----------------------BGI任务------------------------------
 explorer.exe shell:::{3080F90D-D7AD-11D9-BD98-0000947B0257}
 call .\tasks\BGI\BGIAutoRun.bat
@@ -43,6 +44,7 @@ call "!PATH_MARCH7TH!" -S main
 REM II注意II".\tasks\HSR\endHSR.bat"是填在M7th软件"程序-任务完成后运行脚本"里的
 REM -----------------------EnF任务------------------------------
 call .\tasks\EnF\startMaaEnd.bat
+REM II注意II".\tasks\EnF\endArkE.bat"是填在MaaEnd软件任务列表最后的"自定义程序-程序路径"里的
 REM -----------------------MFW任务------------------------------
 start "" ".\tasks\MFW\startMFW-FOS.bat"
 REM 调节亮度为50
