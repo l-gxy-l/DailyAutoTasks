@@ -141,6 +141,7 @@ cl audioMute.cpp /link /SUBSYSTEM:WINDOWS ole32.lib shell32.lib
 # MinGW
 g++ audioMute.cpp -o audioMute.exe -lole32 -loleaut32 -static -mwindows
 ```
+如需更改执行流程，以```自动完成日常.bat```为主。该文件记录了所有自动化软件的执行顺序，执行时会调用.\tasks\<游戏名简写>\文件夹下的其他辅助bat文件。
 
 ## 📄 开源协议
 
