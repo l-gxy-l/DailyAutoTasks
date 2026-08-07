@@ -65,11 +65,11 @@ path_maaend=D:\MAA\MeoAssistant.exe
 path_march7th=D:\HSR_March7th\March7th Launcher.exe
 path_bgi=D:\BetterGI\BetterGI.exe
 path_fos=D:\FOS\FOS.exe
-```
+```   
 - 打开自动化软件，修改默认执行的配置
-  - **BetterGI：** 需要在一条龙界面设置4种不同的预设，默认预设名称与执行顺序（ABAC刷本法）是：  
-    ```→循环A-循环囤体力-循环B-循环囤体力-循环A-循环囤体力-循环C-循环囤体力→```  
-  - **如果需要使用其他预设，请更改```.\tasks\BGI\BGIAutoRun.bat```中最后一个代码段的内容：**
+	- **BetterGI：** 需要在一条龙界面设置4种不同的预设，默认预设名称与执行顺序（ABAC刷本法）是：  
+ 	```→循环囤体力-循环A-循环囤体力-循环B-循环囤体力-循环A-循环囤体力-循环C→```  
+	- **如果需要使用其他预设，请更改```.\tasks\BGI\BGIAutoRun.bat```中最后一个代码段的内容：**
  	```
  	...
 	REM 根据T5的值决定启动哪一个BGI预设
