@@ -57,7 +57,7 @@
 - 下载release （**请更改/config/paths.ini内的自动化软件路径**）
 
 ### 2. 配置文件
-编辑 `config/paths.ini`，按实际安装位置修改各工具的路径，例如：
+- 编辑 `config/paths.ini`，按实际安装位置修改各工具的路径，例如：
 ```ini
 path_mumu=D:\Program Files\MuMu\emulator\shell\MuMuPlayer.exe
 path_maa=D:\MAA\MeoAssistant.exe
@@ -66,6 +66,28 @@ path_march7th=D:\HSR_March7th\March7th Launcher.exe
 path_bgi=D:\BetterGI\BetterGI.exe
 path_fos=D:\FOS\FOS.exe
 ```
+- 打开自动化软件，修改默认执行的配置
+  - **BetterGI：** 需要在一条龙界面设置4种不同的预设，默认预设名称与执行顺序（ABAC刷本）是```→循环A-囤体力-循环B-囤体力-循环A-囤体力-循环C-囤体力→```  
+    ***如果需要使用其他预设，请更改```.\tasks\BGI\BGIAutoRun.bat```中最后一个代码段的内容：***
+  ```
+  ...
+  REM 根据T5的值决定启动哪一个BGI预设
+  if "!T5!" == "囤" (
+  echo !date!,!time!运行了配置---囤体力 >> ".\logs\BGI循环日志.txt"
+  "!PATH_BGI!" --startOneDragon 循环囤体力
+  ) else if "!T5!" == "A" (
+  echo !date!,!time!运行了配置---循环A >> ".\logs\BGI循环日志.txt"
+  "!PATH_BGI!" --startOneDragon 循环A
+  ) else if "!T5!" == "B" (
+  echo !date!,!time!运行了配置---循环B >> ".\logs\BGI循环日志.txt"
+  "!PATH_BGI!" --startOneDragon 循环B
+  ) else if "!T5!" == "C" (
+  echo !date!,!time!运行了配置---循环C >> ".\logs\BGI循环日志.txt"
+  "!PATH_BGI!" --startOneDragon 循环C
+  ) else (echo [ERROR]!date!,!time!:主程序执行出错，缺少可用数值的L1>> ".\logs\BGI循环日志.txt"
+	set "T6=上一次主程序执行出错，算作今日未运行，最好重开这个bat文件"
+  )
+  ```
 
 ### 3. 运行
 右键 `自动完成日常.bat` → **以管理员身份运行**。  
