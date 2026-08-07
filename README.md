@@ -67,43 +67,44 @@ path_bgi=D:\BetterGI\BetterGI.exe
 path_fos=D:\FOS\FOS.exe
 ```
 - 打开自动化软件，修改默认执行的配置
-  - **BetterGI：** 需要在一条龙界面设置4种不同的预设，默认预设名称与执行顺序（ABAC刷本法）是```→循环A-循环囤体力-循环B-循环囤体力-循环A-循环囤体力-循环C-循环囤体力→```  
-    ***如果需要使用其他预设，请更改```.\tasks\BGI\BGIAutoRun.bat```中最后一个代码段的内容：***
-  ```
-  ...
-  REM 根据T5的值决定启动哪一个BGI预设
-  if "!T5!" == "囤" (
-  echo !date!,!time!运行了配置---囤体力 >> ".\logs\BGI循环日志.txt"
-  "!PATH_BGI!" --startOneDragon 循环囤体力
-  ) else if "!T5!" == "A" (
-  echo !date!,!time!运行了配置---循环A >> ".\logs\BGI循环日志.txt"
-  "!PATH_BGI!" --startOneDragon 循环A
-  ) else if "!T5!" == "B" (
-  echo !date!,!time!运行了配置---循环B >> ".\logs\BGI循环日志.txt"
-  "!PATH_BGI!" --startOneDragon 循环B
-  ) else if "!T5!" == "C" (
-  echo !date!,!time!运行了配置---循环C >> ".\logs\BGI循环日志.txt"
-  "!PATH_BGI!" --startOneDragon 循环C
-  ) else (echo [ERROR]!date!,!time!:主程序执行出错，缺少可用数值的L1>> ".\logs\BGI循环日志.txt"
-	set "T6=上一次主程序执行出错，算作今日未运行，最好重开这个bat文件"
-  )
-  ```
+  - **BetterGI：** 需要在一条龙界面设置4种不同的预设，默认预设名称与执行顺序（ABAC刷本法）是：  
+    ```→循环A-循环囤体力-循环B-循环囤体力-循环A-循环囤体力-循环C-循环囤体力→```  
+  - **如果需要使用其他预设，请更改```.\tasks\BGI\BGIAutoRun.bat```中最后一个代码段的内容：**
+ 	```
+ 	...
+	REM 根据T5的值决定启动哪一个BGI预设
+	if "!T5!" == "囤" (
+	echo !date!,!time!运行了配置---囤体力 >> ".\logs\BGI循环日志.txt"
+	"!PATH_BGI!" --startOneDragon 循环囤体力
+	) else if "!T5!" == "A" (
+	echo !date!,!time!运行了配置---循环A >> ".\logs\BGI循环日志.txt"
+	"!PATH_BGI!" --startOneDragon 循环A
+	) else if "!T5!" == "B" (
+	echo !date!,!time!运行了配置---循环B >> ".\logs\BGI循环日志.txt"
+	"!PATH_BGI!" --startOneDragon 循环B
+	) else if "!T5!" == "C" (
+	echo !date!,!time!运行了配置---循环C >> ".\logs\BGI循环日志.txt"
+	"!PATH_BGI!" --startOneDragon 循环C
+	) else (echo [ERROR]!date!,!time!:主程序执行出错，缺少可用数值的L1>> ".\logs\BGI循环日志.txt"
+		set "T6=上一次主程序执行出错，算作今日未运行，最好重开这个bat文件"
+	)
+	```
 
 ### 3. 运行
-右键 `自动完成日常.bat` → **以管理员身份运行**。  
-脚本将依次执行：
-```
-1. 静音并降低屏幕亮度
-2. 打开网页领取云时长
-3. 启动 MuMu 模拟器并执行 MAA（明日方舟）
-4. 运行 BetterGI 原神循环任务
-5. 启动 March7th 执行崩坏：星穹铁道任务
-6. 启动明日方舟：终末地的 MAA 任务
-7. 启动模拟器战双及 FOS 脚本
-8. 恢复亮度和声音
-```
+- 右键 `自动完成日常.bat` → **以管理员身份运行**。  
+	- 脚本将依次执行：
+	```
+	1. 静音并降低屏幕亮度
+	2. 打开网页领取云时长
+	3. 启动 MuMu 模拟器并执行 MAA（明日方舟）
+	4. 运行 BetterGI 原神循环任务
+	5. 启动 March7th 执行崩坏：星穹铁道任务
+	6. 启动明日方舟：终末地的 MAA 任务
+	7. 启动模拟器战双及 FOS 脚本
+	8. 恢复亮度和声音
+	```
 
-若需无人值守，可配合 **Windows 任务计划程序** 设置定时唤醒电脑并运行。
+- 若需无人值守，可配合 **Windows 任务计划程序** 设置定时唤醒电脑并运行。
 
 ## 🔧 工具说明
 
