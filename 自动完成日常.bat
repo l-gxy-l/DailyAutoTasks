@@ -40,8 +40,8 @@ explorer.exe shell:::{3080F90D-D7AD-11D9-BD98-0000947B0257}
 call .\tasks\BGI\BGIAutoRun.bat
 REM -----------------------HSR任务------------------------------
 for /f "tokens=2 delims==" %%a in ('findstr /b "path_march7th=" ".\config\paths.ini"') do set "PATH_MARCH7TH=%%a"
-call "!PATH_MARCH7TH!" -S main
-REM II注意II".\tasks\HSR\endHSR.bat"是填在M7th软件"程序-任务完成后运行脚本"里的
+call "!PATH_MARCH7TH!" -S main -e
+start "" ".\tasks\HSR\endHSR.bat“
 REM -----------------------EnF任务------------------------------
 call .\tasks\EnF\startMaaEnd.bat
 call .\tasks\EnF\endArkE.bat
