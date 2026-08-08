@@ -57,7 +57,7 @@
 - 下载release （**请更改/config/paths.ini内的自动化软件路径**）
 
 ### 2. 配置文件
-编辑 `config/paths.ini`，按实际安装位置修改各工具的路径，例如：
+- 编辑 `config/paths.ini`，按实际安装位置修改各工具的路径，例如：
 ```ini
 path_mumu=D:\Program Files\MuMu\emulator\shell\MuMuPlayer.exe
 path_maa=D:\MAA\MeoAssistant.exe
@@ -65,23 +65,46 @@ path_maaend=D:\MAA\MeoAssistant.exe
 path_march7th=D:\HSR_March7th\March7th Launcher.exe
 path_bgi=D:\BetterGI\BetterGI.exe
 path_fos=D:\FOS\FOS.exe
-```
+```   
+- 打开自动化软件，修改默认执行的配置
+	- **BetterGI：** 需要在一条龙界面设置4种不同的预设，默认预设名称与执行顺序（ABAC刷本法）是：  
+ 	```→循环囤体力-循环A-循环囤体力-循环B-循环囤体力-循环A-循环囤体力-循环C→```  
+	- **如果需要使用其他预设，请更改```.\tasks\BGI\BGIAutoRun.bat```中最后一个代码段的内容：**
+ 	```
+ 	...
+	REM 根据T5的值决定启动哪一个BGI预设
+	if "!T5!" == "囤" (
+	echo !date!,!time!运行了配置---囤体力 >> ".\logs\BGI循环日志.txt"
+	"!PATH_BGI!" --startOneDragon 循环囤体力
+	) else if "!T5!" == "A" (
+	echo !date!,!time!运行了配置---循环A >> ".\logs\BGI循环日志.txt"
+	"!PATH_BGI!" --startOneDragon 循环A
+	) else if "!T5!" == "B" (
+	echo !date!,!time!运行了配置---循环B >> ".\logs\BGI循环日志.txt"
+	"!PATH_BGI!" --startOneDragon 循环B
+	) else if "!T5!" == "C" (
+	echo !date!,!time!运行了配置---循环C >> ".\logs\BGI循环日志.txt"
+	"!PATH_BGI!" --startOneDragon 循环C
+	) else (echo [ERROR]!date!,!time!:主程序执行出错，缺少可用数值的L1>> ".\logs\BGI循环日志.txt"
+		set "T6=上一次主程序执行出错，算作今日未运行，最好重开这个bat文件"
+	)
+	```
 
 ### 3. 运行
-右键 `自动完成日常.bat` → **以管理员身份运行**。  
-脚本将依次执行：
-```
-1. 静音并降低屏幕亮度
-2. 打开米游社签到链接
-3. 启动 MuMu 模拟器并执行 MAA（明日方舟）
-4. 运行 BetterGI 原神循环任务
-5. 启动 March7th 执行崩坏：星穹铁道任务
-6. 启动明日方舟：终末地的 MAA 任务
-7. 启动战双模拟器及 FOS 脚本
-8. 恢复亮度和声音
-```
+- 右键 `自动完成日常.bat` → **以管理员身份运行**。  
+	- 脚本将依次执行：
+	```
+	1. 静音并降低屏幕亮度
+	2. 打开网页领取云时长
+	3. 启动 MuMu 模拟器并执行 MAA（明日方舟）
+	4. 运行 BetterGI 原神循环任务
+	5. 启动 March7th 执行崩坏：星穹铁道任务
+	6. 启动明日方舟：终末地的 MAA 任务
+	7. 启动模拟器战双及 FOS 脚本
+	8. 恢复亮度和声音
+	```
 
-若需无人值守，可配合 **Windows 任务计划程序** 设置定时唤醒电脑并运行。
+- 若需无人值守，可配合 **Windows 任务计划程序** 设置定时唤醒电脑并运行。
 
 ## 🔧 工具说明
 
@@ -106,7 +129,7 @@ audioMute.exe unmute    # 恢复声音
 ```
 1. 当前模式：0=囤体力，1=刷副本
 2. 副本循环：1-A，2-B，3-C
-3. ABAC 分支：1 或 2
+3. ABAC 分支：1是A→B 或 2是A→C
 4. 错误信息（无错误时显示“无错误”）
 5. 上一次执行的预设名（囤/A/B/C）
 6. 上次运行日期（星期几）或错误信息
@@ -117,19 +140,19 @@ audioMute.exe unmute    # 恢复声音
 
 ## 📜 任务流程详解
 
-- **原神**：根据 `BGIjudge.txt` 自动计算下一日应执行的循环（一条龙预设 A/B/C/囤体力 ），启动 BetterGI 对应预设。
-- **崩坏：星穹铁道**：调用 March7th 执行主线挂机任务，完成后自动结束游戏进程。
 - **明日方舟**：通过 MAA 启动，需要在maa中设置“打开maa时自动运行”。
+- **原神**：根据 `BGIjudge.txt` 的循环信息启动 BetterGI 对应预设（一条龙预设 A/B/C/囤体力 ），自动计算下一日应执行的循环。
+- **崩坏：星穹铁道**：调用 March7th 执行日常任务，完成后自动结束游戏和软件进程（需要在March7th中设置结束任务后运行脚本）。
 - **明日方舟：终末地**：通过 MaaEnd 的 `--autostart` 参数一键启动。
 - **战双帕弥什**：连接 MuMu 模拟器，启动 FOS 自动化脚本，执行完毕后退出 adb 进程。
 
 ## ⚠️ 注意事项
 
-1. **路径依赖**：多数脚本使用相对路径，运行主脚本时自动切换到根目录。
+1. **路径依赖**：自动化软件使用绝对路径，需要在.\config\paths.ini中自行设置；多数脚本使用相对路径，运行主脚本时自动切换到根目录。
 2. **管理员权限**：亮度调节（WMI）和部分进程管理需要管理员权限，主脚本会自动检测并提示。
-3. **模拟器 ADB**：MAA系列任务依赖 ADB 连接，请确保模拟器已开启 USB 调试，且端口在自动化软件内已经正确设置。
+3. **模拟器 ADB**：MAA系列任务依赖 ADB 连接，请确保模拟器已开启 USB 调试，且在自动化软件内已经正确设置端口。
 4. **硬件兼容性**：亮度调节仅对笔记本内置显示器有效，部分外接显示器可能不支持。
-5. **日志文件**：日志会持续追加，建议定期清理 `logs` 文件夹以释放空间。
+5. **日志文件**：日志会持续追加，可以定期清理 `logs` 文件夹以释放空间。
 
 ## 🛠️ 开发 & 编译
 
@@ -141,6 +164,7 @@ cl audioMute.cpp /link /SUBSYSTEM:WINDOWS ole32.lib shell32.lib
 # MinGW
 g++ audioMute.cpp -o audioMute.exe -lole32 -loleaut32 -static -mwindows
 ```
+如需更改执行流程，以```自动完成日常.bat```为主。该文件记录了所有自动化软件的执行顺序，执行时会调用```.\tasks\<游戏名简写>\```文件夹下的其他辅助bat文件。
 
 ## 📄 开源协议
 
