@@ -18,5 +18,5 @@ if "!D!" == "!L1!" (
 	echo 今日已运行，上一次（L1）：!L1!，今天（D）：!D! >> ".\config\MFWjudge.txt"
 ) else (
 	taskkill /f /im adb.exe
-	start "" "!PATH_FOS!" --direct-run
+	call "" "!PATH_FOS!" --direct-run
 )
