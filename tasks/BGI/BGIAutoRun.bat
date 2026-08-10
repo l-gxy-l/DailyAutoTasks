@@ -35,16 +35,16 @@ set "N4=无错误"
 set "T5=囤"
 for /f "tokens=1" %%a in ("!date!") do set "T6=%%a"
 REM 输出到调试txt，共4行，如果运行过了则再打印到第5行,两个break：不知道为什么有时候首个break会不清空文件
-break > ".\logs\BGI调试日志.txt"
-break > ".\logs\BGI调试日志.txt"
-echo 上次运行日期L6==!L6! >> ".\logs\BGI调试日志.txt"
-echo 今天运行日期T6==!T6! >> ".\logs\BGI调试日志.txt"
-echo 循环数信息：L1,L2,L3==!L1!,!L2!,!L3! >> ".\logs\BGI调试日志.txt"
-echo 循环数计算结果：上一次循环数（LP）是：!LP!，本次运行的循环数T5是：!T5! >> ".\logs\BGI调试日志.txt"
+break > ".\logs\BGI调试日志.log"
+break > ".\logs\BGI调试日志.log"
+echo 上次运行日期L6==!L6! >> ".\logs\BGI调试日志.log"
+echo 今天运行日期T6==!T6! >> ".\logs\BGI调试日志.log"
+echo 循环数信息：L1,L2,L3==!L1!,!L2!,!L3! >> ".\logs\BGI调试日志.log"
+echo 循环数计算结果：上一次循环数（LP）是：!LP!，本次运行的循环数T5是：!T5! >> ".\logs\BGI调试日志.log"
 REM 进行循环数计算并赋给T5
 if "!T6!" == "!L6!" (
 	set T5=!LP!
-	echo T6（!T6!）==L6（!L6!），今天已经计算过了~ >> ".\logs\BGI调试日志.txt"
+	echo T6（!T6!）==L6（!L6!），今天已经计算过了~ >> ".\logs\BGI调试日志.log"
 ) else (
 	if "!L1!" == "0" (
 		set "T5=囤"
@@ -62,7 +62,7 @@ if "!T6!" == "!L6!" (
 				set "N2=3"
 				set "N3=1"
 			) else (set "N4=BGIjudge文件里的---L3---循环数出现错误,但问题不大，会导致后天的刷C变成刷B。"
-				echo [ERROR]!date!,!time!:!N4! >> ".\logs\BGI循环日志.txt"
+				echo [ERROR]!date!,!time!:!N4! >> ".\logs\BGI循环日志.log"
 			) 
 		) else if "!L2!"=="2" (
 			set "T5=B"
@@ -73,11 +73,11 @@ if "!T6!" == "!L6!" (
 			set "N2=1"
 			set "N3=!L3!"		
 		) else (set "N4=BGIjudge文件里的---L2---循环数出现错误，本次无法运行BGI"
-			echo [ERROR]!date!,!time!:!N4! >> ".\logs\BGI循环日志.txt"
+			echo [ERROR]!date!,!time!:!N4! >> ".\logs\BGI循环日志.log"
 			set "T6=L2循环数出现错误，算作今日未运行，最好重开这个bat文件"
 		) 
 	) else (set "N4=BGIjudge文件里---L1---的循环数出现错误，本次无法运行BGI"
-		echo [ERROR]!date!,!time!:!N4! >> ".\logs\BGI循环日志.txt"
+		echo [ERROR]!date!,!time!:!N4! >> ".\logs\BGI循环日志.log"
 		set "T6=L1的循环数出现错误，算作今日未运行，最好重开这个bat文件"
 	)
 	break > ".\config\BGIjudge.txt"
@@ -92,18 +92,18 @@ REM 导入BGI路径-------------------------------------------------------------
 for /f "tokens=2 delims==" %%a in ('findstr /b "path_bgi=" ".\config\paths.ini"') do set "PATH_BGI=%%a"
 REM 根据T5的值决定启动哪一个BGI预设
 if "!T5!" == "囤" (
-echo !date!,!time!运行了配置---囤体力 >> ".\logs\BGI循环日志.txt"
+echo !date!,!time!运行了配置---囤体力 >> ".\logs\BGI循环日志.log"
 "!PATH_BGI!" --startOneDragon 循环囤体力
 ) else if "!T5!" == "A" (
-echo !date!,!time!运行了配置---循环A >> ".\logs\BGI循环日志.txt"
+echo !date!,!time!运行了配置---循环A >> ".\logs\BGI循环日志.log"
 "!PATH_BGI!" --startOneDragon 循环A
 ) else if "!T5!" == "B" (
-echo !date!,!time!运行了配置---循环B >> ".\logs\BGI循环日志.txt"
+echo !date!,!time!运行了配置---循环B >> ".\logs\BGI循环日志.log"
 "!PATH_BGI!" --startOneDragon 循环B
 ) else if "!T5!" == "C" (
-echo !date!,!time!运行了配置---循环C >> ".\logs\BGI循环日志.txt"
+echo !date!,!time!运行了配置---循环C >> ".\logs\BGI循环日志.log"
 "!PATH_BGI!" --startOneDragon 循环C
-) else (echo [ERROR]!date!,!time!:主程序执行出错，缺少可用数值的L1>> ".\logs\BGI循环日志.txt"
+) else (echo [ERROR]!date!,!time!:主程序执行出错，缺少可用数值的L1>> ".\logs\BGI循环日志.log"
 	set "T6=上一次主程序执行出错，算作今日未运行，最好重开这个bat文件"
 )
 
