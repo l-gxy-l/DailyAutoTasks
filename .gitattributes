@@ -5,3 +5,4 @@ audioMute/ export-ignore
 logs/ export-ignore
 #文件（ export-ignore）------------------------------
 .gitattributes export-ignore
+*.log export-ignore
