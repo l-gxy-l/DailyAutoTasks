@@ -6,3 +6,4 @@ logs/ export-ignore
 #文件（ export-ignore）------------------------------
 .gitattributes export-ignore
 *.log export-ignore
+*.blg export-ignore

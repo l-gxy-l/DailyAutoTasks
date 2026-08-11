@@ -23,7 +23,7 @@ set "mainlog=.\logs\主脚本运行日志\%D%-日常.log"
 set "logmanlog=.\logs\主脚本运行日志\%D%-性能日志"
 REM 创建带 BOM 的 UTF-8 日志文件，解决中文乱码
 break > "%mainlog%"
-REM powershell -Command "$utf8 = New-Object System.Text.UTF8Encoding $true; [System.IO.File]::WriteAllText('%mainlog%', '', $utf8)"
+powershell -Command "$utf8 = New-Object System.Text.UTF8Encoding $true; [System.IO.File]::WriteAllText('%mainlog%', '', $utf8)"
 
 :: ====== 3. 配置 logman 采集器 ======
 echo [%date% %time%] 配置 logman 采集器 >> "%mainlog%"
