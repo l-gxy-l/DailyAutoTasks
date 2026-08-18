@@ -32,7 +32,7 @@ echo [%date% %time%] 先删除可能重名的旧采集器 >> "%mainlog%"
 logman stop "%logmanName%" >> "%mainlog%"
 logman delete "%logmanName%" >> "%mainlog%"
 echo [%date% %time%] 创建新的计数器采集器（记录内存百分比和可用 MB） >> "%mainlog%"
-logman create counter "%logmanName%" -o "%logmanlog%" -f bincirc -max 500 -si 30 -v mmddhhmm -c "\Memory\%% Committed Bytes In Use" "\Memory\Available MBytes" "\Processor(_Total)\% Processor Time" >> "%mainlog%"
+logman create counter "%logmanName%" -o "%logmanlog%" -f bincirc -max 500 -si 30 -v mmddhhmm -c "\Memory\%% Committed Bytes In Use" "\Memory\Available MBytes" "\Processor(_Total)\%% Processor Time" >> "%mainlog%"
 
 :: ====== 4. 启动性能日志记录 ======
 echo [%date% %time%] 启动性能日志记录 >> "%mainlog%"
