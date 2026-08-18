@@ -1,0 +1,1180 @@
+﻿[周一 2026/08/17  5:00:03.65] 配置 logman 采集器 
+[周一 2026/08/17  5:00:03.65] 先删除可能重名的旧采集器 
+
+Error:
+Data Collector Set was not found.
+
+Error:
+Data Collector Set was not found.
+[周一 2026/08/17  5:00:03.71] 创建新的计数器采集器（记录内存百分比和可用 MB） 
+[周一 2026/08/17  5:00:04.01] 启动性能日志记录 
+The command completed successfully.
+[周一 2026/08/17  5:00:05.76] 性能监控已启动，数据保存到: .\logs\主脚本运行日志\2026-8-17_05-00-02-性能日志.blg 
+[周一 2026/08/17  5:00:05.76] 自动完成日常.bat开始执行 
+
+E:\Games\DailyAutoTasks>REM @echo off 
+
+E:\Games\DailyAutoTasks>chcp 65001 
+Active code page: 65001
+
+E:\Games\DailyAutoTasks>echo [周一 2026/08/17  5:00:05.77] 设置代码页为UTF-8，启用延迟扩展，检测管理员权限 
+[周一 2026/08/17  5:00:05.77] 设置代码页为UTF-8，启用延迟扩展，检测管理员权限
+
+E:\Games\DailyAutoTasks>setlocal enabledelayedexpansion 
+
+E:\Games\DailyAutoTasks>NET SESSION  1>nul 2>&1 
+
+E:\Games\DailyAutoTasks>if 0 NEQ 0 (
+echo 请右键以管理员身份运行此脚本！  
+ pause 
+ exit
+) 
+
+E:\Games\DailyAutoTasks>cd /d "E:\Games\DailyAutoTasks\" 
+
+E:\Games\DailyAutoTasks>echo [周一 2026/08/17  5:00:05.80] 关闭系统声音 
+[周一 2026/08/17  5:00:05.80] 关闭系统声音
+
+E:\Games\DailyAutoTasks>call .\tools\audioMute.exe mute 
+
+E:\Games\DailyAutoTasks>if 0 EQU 0 (echo 周一 2026/08/17  5:00:06.60 已静音  1>>.\logs\音频日志.log )  else if 0 EQU 2 (echo 周一 2026/08/17  5:00:06.60 静音失败，错误码: 0  1>>.\logs\音频日志.log )  else (echo 周一 2026/08/17  5:00:06.60 错误码: 0。4是无效参数，5是参数不足。  1>>.\logs\音频日志.log ) 
+
+E:\Games\DailyAutoTasks>echo [周一 2026/08/17  5:00:06.61] 调亮度 
+[周一 2026/08/17  5:00:06.61] 调亮度
+
+E:\Games\DailyAutoTasks>WMIC /NAMESPACE:\\root\wmi PATH WmiMonitorBrightnessMethods WHERE "Active=TRUE" CALL WmiSetBrightness Brightness=1 Timeout=0 
+Executing (\\LAPTOP-FM5T3Q6H\root\wmi:WmiMonitorBrightnessMethods.InstanceName="DISPLAY\\BOE0998\\4&15f1691e&0&UID8388688_0")->WmiSetBrightness()
+Method execution successful.
+
+E:\Games\DailyAutoTasks>echo [周一 2026/08/17  5:00:06.67] ----------------------领取时长------------------------------ 
+[周一 2026/08/17  5:00:06.67] ----------------------领取时长------------------------------
+
+E:\Games\DailyAutoTasks>start .\tools\GIcloud.url   1>nul 2>&1 
+
+E:\Games\DailyAutoTasks>echo [周一 2026/08/17  5:00:06.93] -----------------------MAA任务------------------------------ 
+[周一 2026/08/17  5:00:06.93] -----------------------MAA任务------------------------------
+
+E:\Games\DailyAutoTasks>echo [周一 2026/08/17  5:00:06.93] 开模拟器 
+[周一 2026/08/17  5:00:06.93] 开模拟器
+
+E:\Games\DailyAutoTasks>taskkill /f /im adb.exe 
+ERROR: The process "adb.exe" not found.
+
+E:\Games\DailyAutoTasks>for /F "tokens=2 delims==" %a in ('findstr /b "path_mumu=" ".\config\paths.ini"') do set "PATH_MUMU=%a" 
+
+E:\Games\DailyAutoTasks>set "PATH_MUMU=E:\YXArkNights-12.0\shell\MuMuPlayer.exe" 
+
+E:\Games\DailyAutoTasks>start "" "!PATH_MUMU!"   1>nul 2>&1 
+
+E:\Games\DailyAutoTasks>timeout /t 15 
+
+Waiting for 15 seconds, press a key to continue ...1413121110 9 8 7 6 5 4 3 2 1 0
+
+E:\Games\DailyAutoTasks>echo [周一 2026/08/17  5:00:22.10] 关浏览器 
+[周一 2026/08/17  5:00:22.10] 关浏览器
+
+E:\Games\DailyAutoTasks>taskkill /IM msedge.exe 
+SUCCESS: Sent termination signal to the process "msedge.exe" with PID 11112.
+SUCCESS: Sent termination signal to the process "msedge.exe" with PID 7488.
+SUCCESS: Sent termination signal to the process "msedge.exe" with PID 7256.
+SUCCESS: Sent termination signal to the process "msedge.exe" with PID 7536.
+ERROR: The process "msedge.exe" with PID 9996 could not be terminated.
+Reason: This process can only be terminated forcefully (with /F option).
+ERROR: The process "msedge.exe" with PID 8028 could not be terminated.
+Reason: This process can only be terminated forcefully (with /F option).
+ERROR: The process "msedge.exe" with PID 6120 could not be terminated.
+Reason: This process can only be terminated forcefully (with /F option).
+ERROR: The process "msedge.exe" with PID 9760 could not be terminated.
+Reason: This process can only be terminated forcefully (with /F option).
+ERROR: The process "msedge.exe" with PID 7552 could not be terminated.
+Reason: This process can only be terminated forcefully (with /F option).
+ERROR: The process "msedge.exe" with PID 15088 could not be terminated.
+Reason: This process can only be terminated forcefully (with /F option).
+ERROR: The process "msedge.exe" with PID 16404 could not be terminated.
+Reason: This process can only be terminated forcefully (with /F option).
+ERROR: The process "msedge.exe" with PID 14744 could not be terminated.
+Reason: This process can only be terminated forcefully (with /F option).
+ERROR: The process "msedge.exe" with PID 8580 could not be terminated.
+Reason: This process can only be terminated forcefully (with /F option).
+ERROR: The process "msedge.exe" with PID 13212 could not be terminated.
+Reason: This process can only be terminated forcefully (with /F option).
+ERROR: The process "msedge.exe" with PID 2696 could not be terminated.
+Reason: This process can only be terminated forcefully (with /F option).
+
+E:\Games\DailyAutoTasks>echo [周一 2026/08/17  5:00:22.19] MAA 
+[周一 2026/08/17  5:00:22.19] MAA
+
+E:\Games\DailyAutoTasks>for /F "tokens=2 delims==" %a in ('findstr /b "path_maa=" ".\config\paths.ini"') do set "PATH_MAA=%a" 
+
+E:\Games\DailyAutoTasks>set "PATH_MAA=E:\Games\MAA-明日方舟脚本\MAA.exe" 
+
+E:\Games\DailyAutoTasks>start "" "!PATH_MAA!"   1>nul 2>&1 
+
+E:\Games\DailyAutoTasks>timeout /t 30 
+
+Waiting for 30 seconds, press a key to continue ...2928272625242322212019181716151413121110 9 8 7 6 5 4 3 2 1 0
+
+E:\Games\DailyAutoTasks>echo [周一 2026/08/17  5:00:52.16] -----------------------BGI任务------------------------------ 
+[周一 2026/08/17  5:00:52.16] -----------------------BGI任务------------------------------
+
+E:\Games\DailyAutoTasks>explorer.exe shell:::{3080F90D-D7AD-11D9-BD98-0000947B0257} 
+
+E:\Games\DailyAutoTasks>call .\tasks\BGI\BGIAutoRun.bat 
+
+E:\Games\DailyAutoTasks>REM  设置代码页为UTF-8，启用延迟扩展 
+
+E:\Games\DailyAutoTasks>chcp 65001 
+Active code page: 65001
+
+E:\Games\DailyAutoTasks>setlocal enabledelayedexpansion 
+
+E:\Games\DailyAutoTasks>REM  切换到主文件根目录 
+
+E:\Games\DailyAutoTasks>cd /d "E:\Games\DailyAutoTasks\tasks\BGI\" 
+
+E:\Games\DailyAutoTasks\tasks\BGI>cd ..\..\ 
+
+E:\Games\DailyAutoTasks>REM -----------------------------------------Loop计算------------------------------------------------------ 
+
+E:\Games\DailyAutoTasks>REM 读judge文件，赋值给LX。文件5行内容的意义如下： 
+
+E:\Games\DailyAutoTasks>L1 0-囤 1-刷 
+'L1' is not recognized as an internal or external command,
+operable program or batch file.
+
+E:\Games\DailyAutoTasks>REM L2 1-A 2-B 3-C 
+
+E:\Games\DailyAutoTasks>REM L3 ABAC的分支判断-分支1或2 
+
+E:\Games\DailyAutoTasks>REM 4  错误信息 
+
+E:\Games\DailyAutoTasks>REM LP 上一次的循环数，即上次运行bat时计算得到的预设名 
+
+E:\Games\DailyAutoTasks>期或错误信息
+'期或错误信息' is not recognized as an internal or external command,
+operable program or batch file.
+
+E:\Games\DailyAutoTasks>set "idx=0" 
+
+E:\Games\DailyAutoTasks>for /F "tokens=1" %a in (.\config\BGIjudge.txt) do (
+set /a idx+=1  
+ if !idx! EQU 1 set "L1=%a"  
+ if !idx! EQU 2 set "L2=%a"  
+ if !idx! EQU 3 set "L3=%a"  
+ if !idx! EQU 5 set "LP=%a"  
+ if !idx! EQU 6 set "L6=%a" 
+) 
+
+E:\Games\DailyAutoTasks>(
+set /a idx+=1  
+ if !idx! EQU 1 set "L1=1"  
+ if !idx! EQU 2 set "L2=1"  
+ if !idx! EQU 3 set "L3=1"  
+ if !idx! EQU 5 set "LP=1"  
+ if !idx! EQU 6 set "L6=1" 
+) 
+
+E:\Games\DailyAutoTasks>(
+set /a idx+=1  
+ if !idx! EQU 1 set "L1=1"  
+ if !idx! EQU 2 set "L2=1"  
+ if !idx! EQU 3 set "L3=1"  
+ if !idx! EQU 5 set "LP=1"  
+ if !idx! EQU 6 set "L6=1" 
+) 
+
+E:\Games\DailyAutoTasks>(
+set /a idx+=1  
+ if !idx! EQU 1 set "L1=1"  
+ if !idx! EQU 2 set "L2=1"  
+ if !idx! EQU 3 set "L3=1"  
+ if !idx! EQU 5 set "LP=1"  
+ if !idx! EQU 6 set "L6=1" 
+) 
+
+E:\Games\DailyAutoTasks>(
+set /a idx+=1  
+ if !idx! EQU 1 set "L1=无错误"  
+ if !idx! EQU 2 set "L2=无错误"  
+ if !idx! EQU 3 set "L3=无错误"  
+ if !idx! EQU 5 set "LP=无错误"  
+ if !idx! EQU 6 set "L6=无错误" 
+) 
+
+E:\Games\DailyAutoTasks>(
+set /a idx+=1  
+ if !idx! EQU 1 set "L1=囤"  
+ if !idx! EQU 2 set "L2=囤"  
+ if !idx! EQU 3 set "L3=囤"  
+ if !idx! EQU 5 set "LP=囤"  
+ if !idx! EQU 6 set "L6=囤" 
+) 
+
+E:\Games\DailyAutoTasks>(
+set /a idx+=1  
+ if !idx! EQU 1 set "L1=周日"  
+ if !idx! EQU 2 set "L2=周日"  
+ if !idx! EQU 3 set "L3=周日"  
+ if !idx! EQU 5 set "LP=周日"  
+ if !idx! EQU 6 set "L6=周日" 
+) 
+
+E:\Games\DailyAutoTasks>REM 计算下一次BGI需要执行的预设，其中N是next day的意思，T是today的意思 
+
+E:\Games\DailyAutoTasks>N1 0-囤 1-刷 
+'N1' is not recognized as an internal or external command,
+operable program or batch file.
+
+E:\Games\DailyAutoTasks>REM N2 1-A 2-B 3-C 
+
+E:\Games\DailyAutoTasks>REM N3 ABAC的分支判断-分支1或2 
+
+E:\Games\DailyAutoTasks>REM N  错误信息 
+
+E:\Games\DailyAutoTasks>REM T5 今天计算得到的预设名 
+
+E:\Games\DailyAutoTasks>REM T6 今天日期或错误信息 
+
+E:\Games\DailyAutoTasks>set "N1=0" 
+
+E:\Games\DailyAutoTasks>set "N2=1" 
+
+E:\Games\DailyAutoTasks>set "N3=1" 
+
+E:\Games\DailyAutoTasks>set "N4=无错误" 
+
+E:\Games\DailyAutoTasks>set "T5=囤" 
+
+E:\Games\DailyAutoTasks>for /F "tokens=1" %a in ("!date!") do set "T6=%a" 
+
+E:\Games\DailyAutoTasks>set "T6=周一" 
+
+E:\Games\DailyAutoTasks>REM 输出到调试txt，共4行，如果运行过了则再打印到第5行,两个break：不知道为什么有时候首个break会不清空文件 
+
+E:\Games\DailyAutoTasks>break  1>".\logs\BGI调试日志.log" 
+
+E:\Games\DailyAutoTasks>break  1>".\logs\BGI调试日志.log" 
+
+E:\Games\DailyAutoTasks>echo 上次运行日期L6==!L6!  1>>".\logs\BGI调试日志.log" 
+
+E:\Games\DailyAutoTasks>echo 今天运行日期T6==!T6!  1>>".\logs\BGI调试日志.log" 
+
+E:\Games\DailyAutoTasks>echo 循环数信息：L1,L2,L3==!L1!,!L2!,!L3!  1>>".\logs\BGI调试日志.log" 
+
+E:\Games\DailyAutoTasks>echo 循环数计算结果：上一次循环数（LP）是：!LP!，本次运行的循环数T5是：!T5!  1>>".\logs\BGI调试日志.log" 
+
+E:\Games\DailyAutoTasks>REM 进行循环数计算并赋给T5 
+
+E:\Games\DailyAutoTasks>if "!T6!" == "!L6!" (
+set T5=!LP!  
+ echo T6（!T6!）==L6（!L6!），今天已经计算过了~  1>>".\logs\BGI调试日志.log" 
+)  else (
+if "!L1!" == "0" (
+set "T5=囤"  
+ set "N1=1"  
+ set "N2=!L2!"  
+ set "N3=!L3!" 
+)  else if "!L1!" == "1" (
+set "N1=0"  
+ if "!L2!" == "1" (
+set "T5=A"	  
+ if "!L3!" == "1" (
+set "N2=2"  
+ set "N3=2" 
+)  else if "!L3!" == "2" (
+set "N2=3"  
+ set "N3=1" 
+)  else (
+set "N4=BGIjudge文件里的---L3---循环数出现错误,但问题不大，会导致后天的刷C变成刷B。"  
+ echo [ERROR]!date!,!time!:!N4!  1>>".\logs\BGI循环日志.log" 
+) 
+)  else if "!L2!" == "2" (
+set "T5=B"  
+ set "N2=1"  
+ set "N3=!L3!" 
+)  else if "!L2!" == "3" (
+set "T5=C"  
+ set "N2=1"  
+ set "N3=!L3!"		 
+)  else (
+set "N4=BGIjudge文件里的---L2---循环数出现错误，本次无法运行BGI"  
+ echo [ERROR]!date!,!time!:!N4!  1>>".\logs\BGI循环日志.log"  
+ set "T6=L2循环数出现错误，算作今日未运行，最好重开这个bat文件" 
+) 
+)  else (
+set "N4=BGIjudge文件里---L1---的循环数出现错误，本次无法运行BGI"  
+ echo [ERROR]!date!,!time!:!N4!  1>>".\logs\BGI循环日志.log"  
+ set "T6=L1的循环数出现错误，算作今日未运行，最好重开这个bat文件" 
+)  
+ break  1>".\config\BGIjudge.txt"  
+ echo !N1!  1>>".\config\BGIjudge.txt"  
+ echo !N2!  1>>".\config\BGIjudge.txt"  
+ echo !N3!  1>>".\config\BGIjudge.txt"  
+ echo !N4!  1>>".\config\BGIjudge.txt"  
+ echo !T5!  1>>".\config\BGIjudge.txt"  
+ echo !T6!  1>>".\config\BGIjudge.txt" 
+) 
+
+E:\Games\DailyAutoTasks>REM 导入BGI路径---------------------------------------------------------------------------------------- 
+
+E:\Games\DailyAutoTasks>for /F "tokens=2 delims==" %a in ('findstr /b "path_bgi=" ".\config\paths.ini"') do set "PATH_BGI=%a" 
+
+E:\Games\DailyAutoTasks>set "PATH_BGI=E:\Games\BetterGI\BetterGI.exe" 
+
+E:\Games\DailyAutoTasks>REM 根据T5的值决定启动哪一个BGI预设 
+
+E:\Games\DailyAutoTasks>if "!T5!" == "囤" (
+echo !date!,!time!运行了配置---囤体力  1>>".\logs\BGI循环日志.log"  
+ "!PATH_BGI!" --startOneDragon 循环囤体力 
+)  else if "!T5!" == "A" (
+echo !date!,!time!运行了配置---循环A  1>>".\logs\BGI循环日志.log"  
+ "!PATH_BGI!" --startOneDragon 循环A 
+)  else if "!T5!" == "B" (
+echo !date!,!time!运行了配置---循环B  1>>".\logs\BGI循环日志.log"  
+ "!PATH_BGI!" --startOneDragon 循环B 
+)  else if "!T5!" == "C" (
+echo !date!,!time!运行了配置---循环C  1>>".\logs\BGI循环日志.log"  
+ "!PATH_BGI!" --startOneDragon 循环C 
+)  else (
+echo [ERROR]!date!,!time!:主程序执行出错，缺少可用数值的L1 1>>".\logs\BGI循环日志.log"  
+ set "T6=上一次主程序执行出错，算作今日未运行，最好重开这个bat文件" 
+) 
+
+E:\Games\DailyAutoTasks>taskkill /f /im "MuMuPlayerService.exe" 
+SUCCESS: The process "MuMuPlayerService.exe" with PID 12072 has been terminated.
+
+E:\Games\DailyAutoTasks>echo [周一 2026/08/17  6:56:44.28] -----------------------HSR任务------------------------------ 
+[周一 2026/08/17  6:56:44.28] -----------------------HSR任务------------------------------
+
+E:\Games\DailyAutoTasks>for /F "tokens=2 delims==" %a in ('findstr /b "path_march7th=" ".\config\paths.ini"') do set "PATH_MARCH7TH=%a" 
+
+E:\Games\DailyAutoTasks>set "PATH_MARCH7TH=E:\Games\miHoYo Launcher\games\March7thAssistant\March7th Launcher.exe" 
+
+E:\Games\DailyAutoTasks>call "!PATH_MARCH7TH!" -S main -e 
++-------------------------------------------------------------------------------------------------------------------+
+|                                            ��ӭʹ�� March7th Assistant                                            |
+|                                   https://github.com/moesnow/March7thAssistant                                    |
+|                                                                                                                   |
+|                                    �˳���Ϊ��ѿ�Դ��Ŀ ����㸶��Ǯ�������˿�                                    |
++-------------------------------------------------------------------------------------------------------------------+
+2026-08-17 06:57:07,434 | INFO | GitHub ȷ���������°汾: v2026.7.26
+
+E:\Games\DailyAutoTasks>call ".\tasks\HSR\endHSR.bat" 
+
+E:\Games\DailyAutoTasks>chcp 65001 
+Active code page: 65001
+
+E:\Games\DailyAutoTasks>taskkill /f /im StarRail.exe 
+ERROR: The process "StarRail.exe" not found.
+
+E:\Games\DailyAutoTasks>taskkill /f /im PaddleOCR-json.exe 
+ERROR: The process "PaddleOCR-json.exe" not found.
+
+E:\Games\DailyAutoTasks>taskkill /f /im "March7th Launcher.exe" 
+ERROR: The process "March7th Launcher.exe" not found.
+
+E:\Games\DailyAutoTasks>echo [周一 2026/08/17  7:32:21.84] -----------------------EnF任务------------------------------ 
+[周一 2026/08/17  7:32:21.84] -----------------------EnF任务------------------------------
+
+E:\Games\DailyAutoTasks>call .\tasks\EnF\startMaaEnd.bat 
+
+E:\Games\DailyAutoTasks>chcp 65001 
+Active code page: 65001
+
+E:\Games\DailyAutoTasks>setlocal enabledelayedexpansion 
+
+E:\Games\DailyAutoTasks>cd /d "E:\Games\DailyAutoTasks\tasks\EnF\" 
+
+E:\Games\DailyAutoTasks\tasks\EnF>cd ..\..\ 
+
+E:\Games\DailyAutoTasks>REM -----------------------EnF任务------------------------------ 
+
+E:\Games\DailyAutoTasks>for /F "tokens=2 delims==" %a in ('findstr /b "path_maaend=" ".\config\paths.ini"') do set "PATH_MAAEND=%a" 
+
+E:\Games\DailyAutoTasks>set "PATH_MAAEND=E:\Games\MaaEnd\MaaEnd.exe" 
+
+E:\Games\DailyAutoTasks>call "!PATH_MAAEND!" --autostart -i="Normal" 
+[2026-08-17 07:32:27.858] 检测到快捷键: （开始任务）
+[2026-08-17 07:32:27.907] 正在执行预任务: ⚙️游戏设置
+[2026-08-17 07:32:29.251] 预任务执行完成: ⚙️游戏设置
+[2026-08-17 07:32:29.315] 正在执行前置程序: Endfield.exe...
+[2026-08-17 07:32:29.409] 前置程序 Endfield.exe 执行完成
+[2026-08-17 07:32:29.447] 正在等待窗口「Endfield」就绪...
+[2026-08-17 07:32:55.720] 窗口已就绪
+[2026-08-17 07:33:01.472] 正在连接窗口... Endfield
+[2026-08-17 07:33:01.529] 窗口连接成功: Endfield
+[2026-08-17 07:33:01.649] 等待 5 秒后连接...
+[2026-08-17 07:33:07.086] 正在加载资源: 通用资源（目前仅简中支持较好）
+[2026-08-17 07:33:08.111] 资源加载成功: 通用资源（目前仅简中支持较好）
+[2026-08-17 07:33:10.682] 任务开始: 🎒存放背包
+[2026-08-17 07:34:13.573] 任务完成: 🎒存放背包
+[2026-08-17 07:34:13.636] 任务开始: 🛒售卖产品
+[2026-08-17 07:34:21.448] 正在检查画面，提示登出账号是正常现象，会自动取消
+[31m[2026-08-17 07:34:22.101][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __CancelButtonType1Icon templ size is too large [image=[258,20,16]] [templ=[29,29,16]] [0m
+[31m[2026-08-17 07:34:22.105][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __CancelButtonType1HoverIcon templ size is too large [image=[258,20,16]] [templ=[29,29,16]] [0m
+[31m[2026-08-17 07:34:22.109][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __CancelButtonType1LineIcon templ size is too large [image=[258,20,16]] [templ=[28,30,16]] [0m
+[31m[2026-08-17 07:34:22.114][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __CancelButtonType1LineHoverIcon templ size is too large [image=[258,20,16]] [templ=[26,26,16]] [0m
+[2026-08-17 07:34:22.841] 画面检查通过
+[31m[2026-08-17 07:34:22.876][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __CancelButtonType1Icon templ size is too large [image=[258,20,16]] [templ=[29,29,16]] [0m
+[31m[2026-08-17 07:34:22.880][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __CancelButtonType1HoverIcon templ size is too large [image=[258,20,16]] [templ=[29,29,16]] [0m
+[31m[2026-08-17 07:34:22.883][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __CancelButtonType1LineIcon templ size is too large [image=[258,20,16]] [templ=[28,30,16]] [0m
+[31m[2026-08-17 07:34:22.888][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __CancelButtonType1LineHoverIcon templ size is too large [image=[258,20,16]] [templ=[26,26,16]] [0m
+[31m[2026-08-17 07:34:23.294][ERR][Px5860][Tx15015][ActionHelper.cpp][L30][MaaNS::TaskNS::ActionHelper::wait_freezes] failed to get target rect for wait_freezes [noti_ctx.name=__SceneImageCheckFinishExitSuccess] [0m
+[2026-08-17 07:34:30.937] 👥 已加载干员列表缓存（更新于 2026-08-04 08:53:58），将直接进行干员规划
+[2026-08-17 07:34:32.078] 📋 天王坪援建点当前计划
+[2026-08-17 07:34:32.078] 👤 售卖干员目标：狼卫；售后生产派驻目标：狼卫
+[2026-08-17 07:34:32.078] 📦 售卖顺序：芽针针剂 → 重息壤 → 赫铜零件 → 中容武陵电池 → 低容武陵电池 → 优质芽针针剂 → 优质锦草软饮 → 锦草软饮 → 赤铜零件 → 息壤
+[2026-08-17 07:34:32.078] 🚫 缺货排除：无
+[2026-08-17 07:34:32.078] 🎯 保留量已满足：无
+[2026-08-17 07:34:32.078] ⛔ 用户排除：无
+[2026-08-17 07:34:32.078] 🧰 保留规则：重息壤保留 10000、赫铜零件保留 10000、赤铜零件保留 10000、息壤保留 10000
+[2026-08-17 07:34:32.323] 👤 售卖干员沿用：狼卫（天王坪援建点）
+[2026-08-17 07:34:34.928] 📦 已切换货品：芽针针剂（天王坪援建点）
+[2026-08-17 07:34:38.832] ✅ 已完成交易
+[2026-08-17 07:34:39.101] 📭 当前货品缺货，继续尝试下一货品
+[2026-08-17 07:34:39.157] 🚫 已确认缺货并排除：芽针针剂（天王坪援建点）
+[2026-08-17 07:34:41.508] 📦 已切换货品：重息壤（天王坪援建点）
+[2026-08-17 07:34:53.138] ✅ 已完成交易
+[2026-08-17 07:34:53.282] 🎯 重息壤已达到保留数量 10000，本次任务后续据点将跳过该产品
+[2026-08-17 07:34:55.619] 📦 已切换货品：赫铜零件（天王坪援建点）
+[2026-08-17 07:35:08.073] ✅ 已完成交易
+[2026-08-17 07:35:08.220] 🎯 赫铜零件已达到保留数量 10000，本次任务后续据点将跳过该产品
+[2026-08-17 07:35:10.638] 📦 已切换货品：中容武陵电池（天王坪援建点）
+[2026-08-17 07:35:14.437] ✅ 已完成交易
+[2026-08-17 07:35:14.907] 👤 售后生产干员沿用：狼卫（天王坪援建点）
+[2026-08-17 07:35:17.080] 📋 心脏修缮站当前计划
+[2026-08-17 07:35:17.080] 👤 售卖干员目标：庄方宜；售后生产派驻目标：庄方宜
+[2026-08-17 07:35:17.080] 📦 售卖顺序：灼铜零件 → 中容武陵电池 → 优质锦草软饮 → 息壤
+[2026-08-17 07:35:17.080] 🚫 缺货排除：低容武陵电池、优质芽针针剂
+[2026-08-17 07:35:17.080] 🎯 保留量已满足：重息壤、赫铜零件
+[2026-08-17 07:35:17.080] ⛔ 用户排除：无
+[2026-08-17 07:35:17.080] 🧰 保留规则：灼铜零件保留 10000、息壤保留 10000、重息壤保留 10000、赫铜零件保留 10000
+[2026-08-17 07:35:17.332] 👤 售卖干员沿用：庄方宜（心脏修缮站）
+[2026-08-17 07:35:19.858] 📦 已切换货品：灼铜零件（心脏修缮站）
+[2026-08-17 07:35:23.659] ✅ 已完成交易
+[2026-08-17 07:35:23.979] 👤 售后生产干员沿用：庄方宜（心脏修缮站）
+[2026-08-17 07:35:26.298] 📋 盈天台建设站当前计划
+[2026-08-17 07:35:26.298] 👤 售卖干员目标：诀；售后生产派驻目标：诀
+[2026-08-17 07:35:26.298] 📦 售卖顺序：灼铜零件 → 分离芯 → 中容武陵电池 → 优质锦草软饮 → 息壤
+[2026-08-17 07:35:26.298] 🚫 缺货排除：优质芽针针剂
+[2026-08-17 07:35:26.298] 🎯 保留量已满足：重息壤
+[2026-08-17 07:35:26.298] ⛔ 用户排除：无
+[2026-08-17 07:35:26.298] 🧰 保留规则：灼铜零件保留 10000、分离芯保留 10000、息壤保留 10000、重息壤保留 10000
+[2026-08-17 07:35:26.556] 👤 售卖干员沿用：诀（盈天台建设站）
+[2026-08-17 07:35:28.979] 📦 已切换货品：灼铜零件（盈天台建设站）
+[2026-08-17 07:35:32.810] ✅ 已完成交易
+[2026-08-17 07:35:33.136] 👤 售后生产干员沿用：诀（盈天台建设站）
+[2026-08-17 07:35:41.146] 📋 难民暂居处当前计划
+[2026-08-17 07:35:41.146] 👤 售卖干员目标：卡缪；售后生产派驻目标：卡缪
+[2026-08-17 07:35:41.146] 📦 售卖顺序：柑实罐头 → 精选荞愈胶囊 → 高容谷地电池 → 精选柑实罐头 → 中容谷地电池 → 优质荞愈胶囊 → 优质柑实罐头 → 荞愈胶囊 → 紫晶质瓶 → 晶体外壳 → 紫晶零件
+[2026-08-17 07:35:41.146] 🚫 缺货排除：无
+[2026-08-17 07:35:41.146] 🎯 保留量已满足：无
+[2026-08-17 07:35:41.146] ⛔ 用户排除：无
+[2026-08-17 07:35:41.146] 🧰 保留规则：无（全部售卖）
+[2026-08-17 07:35:41.373] 👤 售卖干员沿用：安塔尔（难民暂居处）
+[2026-08-17 07:35:43.837] 📦 已切换货品：柑实罐头（难民暂居处）
+[2026-08-17 07:35:47.586] ✅ 已完成交易
+[2026-08-17 07:35:47.894] 📭 当前货品缺货，继续尝试下一货品
+[2026-08-17 07:35:47.949] 🚫 已确认缺货并排除：柑实罐头（难民暂居处）
+[2026-08-17 07:35:50.425] 📦 已切换货品：精选荞愈胶囊（难民暂居处）
+[2026-08-17 07:35:54.103] ✅ 已完成交易
+[2026-08-17 07:35:54.601] 👤 售后生产干员沿用：安塔尔（难民暂居处）
+[2026-08-17 07:35:57.088] 📋 基建前站当前计划
+[2026-08-17 07:35:57.088] 👤 售卖干员目标：伊冯；售后生产派驻目标：伊冯
+[2026-08-17 07:35:57.088] 📦 售卖顺序：精选荞愈胶囊 → 高容谷地电池 → 优质柑实罐头 → 低容谷地电池 → 铁制零件
+[2026-08-17 07:35:57.088] 🚫 缺货排除：柑实罐头、精选柑实罐头、中容谷地电池、优质荞愈胶囊
+[2026-08-17 07:35:57.088] 🎯 保留量已满足：无
+[2026-08-17 07:35:57.088] ⛔ 用户排除：无
+[2026-08-17 07:35:57.088] 🧰 保留规则：无（全部售卖）
+[2026-08-17 07:35:57.310] 👤 售卖干员沿用：伊冯（基建前站）
+[2026-08-17 07:35:59.816] 📦 已切换货品：精选荞愈胶囊（基建前站）
+[2026-08-17 07:36:03.557] ✅ 已完成交易
+[2026-08-17 07:36:04.052] 👤 售后生产干员沿用：伊冯（基建前站）
+[2026-08-17 07:36:06.532] 📋 重建指挥部当前计划
+[2026-08-17 07:36:06.532] 👤 售卖干员目标：骏卫；售后生产派驻目标：佩丽卡
+[2026-08-17 07:36:06.532] 📦 售卖顺序：精选荞愈胶囊 → 高容谷地电池 → 优质柑实罐头 → 钢制零件
+[2026-08-17 07:36:06.532] 🚫 缺货排除：柑实罐头、精选柑实罐头、中容谷地电池、优质荞愈胶囊
+[2026-08-17 07:36:06.532] 🎯 保留量已满足：无
+[2026-08-17 07:36:06.532] ⛔ 用户排除：无
+[2026-08-17 07:36:06.532] 🧰 保留规则：无（全部售卖）
+[2026-08-17 07:36:10.648] 👤 售卖干员已切换：骏卫（重建指挥部）
+[2026-08-17 07:36:13.236] 📦 已切换货品：精选荞愈胶囊（重建指挥部）
+[2026-08-17 07:36:17.023] ✅ 已完成交易
+[2026-08-17 07:36:17.286] 📭 当前货品缺货，继续尝试下一货品
+[2026-08-17 07:36:17.344] 🚫 已确认缺货并排除：精选荞愈胶囊（重建指挥部）
+[2026-08-17 07:36:19.721] 📦 已切换货品：高容谷地电池（重建指挥部）
+[2026-08-17 07:36:23.445] ✅ 已完成交易
+[2026-08-17 07:36:30.887] 👤 售后生产干员已切换：佩丽卡（重建指挥部）
+[2026-08-17 07:36:33.142] 🏁 售卖任务已完成
+[2026-08-17 07:36:33.207] 任务完成: 🛒售卖产品
+[2026-08-17 07:36:33.252] 任务开始: 货物装箱
+[2026-08-17 07:37:12.902] 任务完成: 货物装箱
+[2026-08-17 07:37:12.959] 任务开始: 🚚转交委托
+[2026-08-17 07:38:35.312] 任务完成: 🚚转交委托
+[2026-08-17 07:38:35.370] 任务开始: 🏪购买稳定物资
+[2026-08-17 07:38:35.444] 现在游戏时间是周一，根据执行周期跳过任务
+[2026-08-17 07:38:35.490] 任务完成: 🏪购买稳定物资
+[2026-08-17 07:38:35.551] 任务开始: 📦自动囤货
+[2026-08-17 07:38:36.841] 正在前往: 四号谷地
+[2026-08-17 07:38:41.060] 识别完成，共识别到 12 个商品
+[2026-08-17 07:38:41.152] 「低价购买」硬脑壳头盔货组 (价格 389)
+[2026-08-17 07:38:44.568] 购买成功
+[2026-08-17 07:38:44.619] 正在前往: 武陵
+[2026-08-17 07:38:53.820] 识别完成，共识别到 11 个商品
+[2026-08-17 07:38:53.908] 「低价购买」飞天迎宾员货组 (价格 1400)
+[2026-08-17 07:38:57.092] 购买成功
+[2026-08-17 07:38:57.141] 任务完成: 📦自动囤货
+[2026-08-17 07:38:57.191] 任务开始: 🎁基建收取
+[31m[2026-08-17 07:39:19.515][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ADVANCED_COGNITIVE_CARRIER_TEMPLATE templ size is too large [image=[115,86,16]] [templ=[80,96,16]] [0m
+[31m[2026-08-17 07:39:19.880][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[113,78,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:39:19.880][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[147,66,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:39:19.880][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[112,88,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:39:19.880][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[86,91,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:39:19.880][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[18,78,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:39:19.880][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[89,86,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:39:19.880][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[100,83,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:39:19.885][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[6,70,16]] [templ=[79,96,16]] [0m
+[2026-08-17 07:39:20.266] 获得 高级认知载体 ×2
+[2026-08-17 07:39:20.352] 获得 武器检查套组 ×6
+[31m[2026-08-17 07:39:24.830][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[113,78,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:39:24.830][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[136,75,16]] [templ=[79,96,16]] [0m
+[2026-08-17 07:39:27.044] 任务完成: 🎁基建收取
+[2026-08-17 07:39:27.093] 任务开始: 🤝拜访好友
+[2026-08-17 07:39:39.195] 开始拜访好友
+[31m[2026-08-17 07:40:02.631][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[113,78,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:40:02.631][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[132,90,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:40:02.631][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[132,93,16]] [templ=[79,96,16]] [0m
+[2026-08-17 07:40:24.596] 助力次数已满；列表改为只认可线索交换好友
+[31m[2026-08-17 07:41:02.831][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __GrayCancelButtonType2Icon templ size is too large [image=[5,1214,16]] [templ=[25,25,16]] [0m
+[31m[2026-08-17 07:41:02.844][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __GrayCancelButtonType2HoverIcon templ size is too large [image=[5,1214,16]] [templ=[25,25,16]] [0m
+[2026-08-17 07:41:14.997] 线索交换次数已满，已关闭线索交换检查与领取
+[2026-08-17 07:41:15.103] 拜访好友次数已满，停止拜访
+[2026-08-17 07:41:15.167] 任务完成: 🤝拜访好友
+[2026-08-17 07:41:15.215] 任务开始: 🎁基建任务
+[31m[2026-08-17 07:41:50.268][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[114,79,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:41:50.268][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[113,78,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:41:50.268][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[136,75,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:41:50.268][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[134,85,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:41:50.268][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[143,94,16]] [templ=[79,96,16]] [0m
+[2026-08-17 07:42:16.375] 任务完成: 🎁基建任务
+[2026-08-17 07:42:16.433] 任务开始: 🛍️信用点购物
+[31m[2026-08-17 07:42:31.910][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[1,30,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:42:31.910][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[124,30,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:42:31.910][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[136,30,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:42:31.910][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[545,30,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:42:31.910][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[115,18,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:42:31.910][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[108,94,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:42:31.910][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[115,76,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:42:31.910][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[110,82,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:42:31.914][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[50,103,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:42:31.915][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[53,98,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:42:31.915][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[56,117,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:42:31.915][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[154,94,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:42:31.915][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[100,86,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:42:31.915][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[44,72,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:42:31.915][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[123,72,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:42:31.915][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[137,67,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:42:31.915][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[103,63,16]] [templ=[79,96,16]] [0m
+[2026-08-17 07:42:36.354] 刷新商品
+[31m[2026-08-17 07:42:44.387][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[1,30,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:42:44.387][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[124,30,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:42:44.387][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[136,30,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:42:44.387][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[114,30,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:42:44.387][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[545,30,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:42:44.387][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[115,18,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:42:44.387][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[116,84,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:42:44.387][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[115,76,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:42:44.387][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[54,98,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:42:44.392][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[131,94,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:42:44.392][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[180,90,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:42:44.392][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[100,86,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:42:44.392][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[123,73,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:42:44.392][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[43,69,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:42:44.392][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[137,67,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:42:44.392][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[113,67,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:42:44.392][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[104,63,16]] [templ=[79,96,16]] [0m
+[2026-08-17 07:42:48.670] 刷新商品
+[2026-08-17 07:42:54.372] 刷新商品
+[2026-08-17 07:42:59.203] 信用点不足，尝试从帝江号会客室获取
+[2026-08-17 07:43:40.285] 信用点不足
+[2026-08-17 07:43:40.490] 任务完成: 🛍️信用点购物
+[2026-08-17 07:43:40.550] 任务开始: 💊应急理智加强剂
+[2026-08-17 07:43:40.601] 即将进入珍贵物品标签页
+[2026-08-17 07:43:59.209] 没有应急理智加强剂，结束任务
+[2026-08-17 07:43:59.413] 任务完成: 💊应急理智加强剂
+[2026-08-17 07:43:59.463] 任务开始: ⚔️协议空间 1
+[2026-08-17 07:44:18.888] 进入协议空间
+[2026-08-17 07:44:22.303] 确认进入协议空间
+[2026-08-17 07:44:33.013] 进入协议空间成功
+[2026-08-17 07:44:39.897] 开始行动
+[2026-08-17 07:44:40.115] 等待战斗开始
+[2026-08-17 07:44:45.673] 进入战斗场景
+[2026-08-17 07:44:45.893] 共 4 名干员参战
+[2026-08-17 07:44:45.973] 开始战斗，尝试锁定目标
+[2026-08-17 07:44:46.537] 触发干员1终结技
+[2026-08-17 07:44:48.705] 触发干员2终结技
+[2026-08-17 07:44:51.146] 靠近敌人
+[2026-08-17 07:44:51.205] 触发干员3终结技
+[2026-08-17 07:44:53.764] 触发干员4终结技
+[2026-08-17 07:44:56.818] 找不到敌人，尝试锁定目标
+[2026-08-17 07:44:57.097] 触发连携技
+[2026-08-17 07:44:57.567] 触发连携技
+[2026-08-17 07:44:58.420] 触发连携技
+[2026-08-17 07:44:58.582] 触发连携技
+[2026-08-17 07:44:59.783] 长时间找不到敌人，前进
+[2026-08-17 07:45:00.781] 触发干员1技能
+[2026-08-17 07:45:01.261] 触发干员2技能
+[2026-08-17 07:45:01.552] 触发干员3技能
+[2026-08-17 07:45:02.455] 触发干员4技能
+[2026-08-17 07:45:02.736] 触发干员1技能
+[2026-08-17 07:45:04.827] 靠近敌人
+[2026-08-17 07:45:09.919] 靠近敌人
+[2026-08-17 07:45:10.504] 触发干员2技能
+[2026-08-17 07:45:11.346] 触发连携技
+[2026-08-17 07:45:13.854] 触发闪避
+[2026-08-17 07:45:14.013] 触发闪避
+[2026-08-17 07:45:15.897] 触发闪避
+[2026-08-17 07:45:16.063] 触发闪避
+[2026-08-17 07:45:18.660] 触发干员3技能
+[2026-08-17 07:45:19.867] 触发闪避
+[2026-08-17 07:45:20.033] 触发闪避
+[2026-08-17 07:45:20.315] 触发闪避
+[2026-08-17 07:45:20.468] 触发闪避
+[2026-08-17 07:45:22.090] 触发闪避
+[2026-08-17 07:45:26.422] 触发干员4技能
+[2026-08-17 07:45:27.051] 靠近敌人
+[2026-08-17 07:45:28.315] 触发连携技
+[2026-08-17 07:45:29.479] 触发连携技
+[2026-08-17 07:45:32.110] 靠近敌人
+[2026-08-17 07:45:32.823] 触发干员1技能
+[2026-08-17 07:45:33.734] 触发连携技
+[2026-08-17 07:45:34.807] 触发干员2终结技
+[2026-08-17 07:45:37.238] 触发连携技
+[2026-08-17 07:45:37.401] 靠近敌人
+[2026-08-17 07:45:40.403] 触发干员2技能
+[2026-08-17 07:45:43.924] 找不到敌人，尝试锁定目标
+[2026-08-17 07:45:46.945] 长时间找不到敌人，向左移动
+[2026-08-17 07:45:49.447] 当前 1 号干员血量危险，切换到 2 号干员
+[2026-08-17 07:45:49.546] 当前 1 号干员血量危险，切换到 2 号干员
+[2026-08-17 07:45:49.608] 切换到干员2
+[2026-08-17 07:45:49.750] 当前 1 号干员血量危险，切换到 2 号干员
+[2026-08-17 07:45:49.818] 切换到干员2
+[2026-08-17 07:45:49.890] 触发干员3终结技
+[2026-08-17 07:45:51.502] 当前 1 号干员血量危险，切换到 2 号干员
+[2026-08-17 07:45:51.563] 切换到干员2
+[2026-08-17 07:45:52.229] 当前 1 号干员血量危险，切换到 2 号干员
+[2026-08-17 07:45:52.295] 切换到干员2
+[2026-08-17 07:45:52.435] 当前 1 号干员血量危险，切换到 2 号干员
+[2026-08-17 07:45:52.500] 切换到干员2
+[2026-08-17 07:45:52.633] 靠近敌人
+[2026-08-17 07:45:52.701] 当前 1 号干员血量危险，切换到 2 号干员
+[2026-08-17 07:45:52.771] 切换到干员2
+[2026-08-17 07:45:52.871] 触发连携技
+[2026-08-17 07:45:52.980] 触发干员4终结技
+[2026-08-17 07:45:55.987] 找不到敌人，尝试锁定目标
+[2026-08-17 07:45:56.050] 切换到干员2
+[2026-08-17 07:45:57.106] 触发连携技
+[2026-08-17 07:45:57.947] 触发连携技
+[2026-08-17 07:45:59.228] 找不到敌人，尝试锁定目标
+[2026-08-17 07:45:59.675] 靠近敌人
+[2026-08-17 07:45:59.843] 触发干员3技能
+[2026-08-17 07:46:04.762] 靠近敌人
+[2026-08-17 07:46:06.125] 触发干员4技能
+[2026-08-17 07:46:07.980] 触发连携技
+[2026-08-17 07:46:09.821] 靠近敌人
+[2026-08-17 07:46:10.467] 触发闪避
+[2026-08-17 07:46:10.690] 触发干员1技能
+[2026-08-17 07:46:11.090] 当前 2 号干员血量危险，切换到 1 号干员
+[2026-08-17 07:46:11.202] 当前 2 号干员血量危险，切换到 3 号干员
+[2026-08-17 07:46:11.267] 切换到干员1
+[2026-08-17 07:46:11.407] 当前 2 号干员血量危险，切换到 3 号干员
+[2026-08-17 07:46:11.473] 切换到干员3
+[2026-08-17 07:46:11.611] 当前 2 号干员血量危险，切换到 3 号干员
+[2026-08-17 07:46:11.679] 切换到干员3
+[2026-08-17 07:46:11.810] 当前 2 号干员血量危险，切换到 1 号干员
+[2026-08-17 07:46:11.874] 切换到干员3
+[2026-08-17 07:46:12.008] 当前 2 号干员血量危险，切换到 1 号干员
+[2026-08-17 07:46:12.077] 切换到干员1
+[2026-08-17 07:46:12.212] 当前 2 号干员血量危险，切换到 1 号干员
+[2026-08-17 07:46:12.277] 切换到干员1
+[2026-08-17 07:46:12.413] 当前 2 号干员血量危险，切换到 1 号干员
+[2026-08-17 07:46:12.481] 切换到干员1
+[2026-08-17 07:46:12.611] 当前 2 号干员血量危险，切换到 1 号干员
+[2026-08-17 07:46:12.677] 切换到干员1
+[2026-08-17 07:46:12.810] 切换到干员1
+[2026-08-17 07:46:15.444] 靠近敌人
+[2026-08-17 07:46:15.865] 触发连携技
+[2026-08-17 07:46:16.813] 触发连携技
+[2026-08-17 07:46:18.066] 触发干员1终结技
+[2026-08-17 07:46:20.643] 退出战斗场景
+[2026-08-17 07:46:24.116] 向退出点移动
+[2026-08-17 07:46:25.280] 向退出点移动
+[2026-08-17 07:46:26.459] 向退出点移动
+[2026-08-17 07:46:27.538] 向退出点移动
+[2026-08-17 07:46:28.588] 向退出点移动
+[2026-08-17 07:46:29.636] 向退出点移动
+[2026-08-17 07:46:31.143] 打开奖励
+[2026-08-17 07:46:33.255] 尝试使用理智消耗许可
+[2026-08-17 07:46:33.765] 确认领取奖励
+[31m[2026-08-17 07:46:36.130][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ADVANCED_COMBAT_RECORD_TEMPLATE templ size is too large [image=[124,82,16]] [templ=[79,95,16]] [0m
+[31m[2026-08-17 07:46:36.130][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ADVANCED_COMBAT_RECORD_TEMPLATE templ size is too large [image=[113,87,16]] [templ=[79,95,16]] [0m
+[31m[2026-08-17 07:46:36.161][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ARMS_INSP_KIT_TEMPLATE templ size is too large [image=[124,82,16]] [templ=[79,95,16]] [0m
+[31m[2026-08-17 07:46:36.161][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ARMS_INSP_KIT_TEMPLATE templ size is too large [image=[113,87,16]] [templ=[79,95,16]] [0m
+[31m[2026-08-17 07:46:36.193][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __CAST_DIE_TEMPLATE templ size is too large [image=[124,82,16]] [templ=[80,95,16]] [0m
+[31m[2026-08-17 07:46:36.193][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __CAST_DIE_TEMPLATE templ size is too large [image=[113,87,16]] [templ=[80,95,16]] [0m
+[31m[2026-08-17 07:46:36.343][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[15,30,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:46:36.343][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[14,114,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:46:36.350][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[113,79,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:46:36.350][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[114,75,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:46:36.350][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[14,107,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:46:36.350][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[115,74,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:46:36.350][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[114,77,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:46:36.350][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[122,82,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:46:36.353][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[14,73,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:46:36.361][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[136,90,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:46:36.366][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[113,85,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:46:36.366][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[114,74,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:46:36.366][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[171,95,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:46:36.366][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[115,74,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:46:36.366][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[122,82,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:46:36.366][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[83,91,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:46:36.370][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[14,77,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:46:36.370][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[15,76,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:46:36.370][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[83,85,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:46:36.370][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[78,80,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:46:36.370][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[83,86,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:46:36.370][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[83,92,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:46:36.370][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[14,87,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:46:36.370][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[15,124,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:46:36.494][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __OROBERYL_TEMPLATE templ size is too large [image=[111,80,16]] [templ=[79,95,16]] [0m
+[2026-08-17 07:46:36.750] 获得 D96钢样品四 ×12
+[2026-08-17 07:46:37.109] 继续行动
+[2026-08-17 07:46:42.022] 进入协议空间成功
+[2026-08-17 07:46:48.860] 开始行动
+[2026-08-17 07:46:49.089] 等待战斗开始
+[2026-08-17 07:46:54.216] 向退出点移动
+[2026-08-17 07:46:55.623] 找不到退出点
+[2026-08-17 07:46:55.804] 进入战斗场景
+[2026-08-17 07:46:55.994] 共 4 名干员参战
+[2026-08-17 07:46:56.065] 开始战斗，尝试锁定目标
+[2026-08-17 07:46:56.598] 触发干员1终结技
+[2026-08-17 07:46:58.690] 触发干员2终结技
+[2026-08-17 07:47:01.367] 靠近敌人
+[2026-08-17 07:47:01.439] 触发干员3终结技
+[2026-08-17 07:47:03.928] 触发干员4终结技
+[2026-08-17 07:47:06.946] 找不到敌人，尝试锁定目标
+[2026-08-17 07:47:07.016] 触发连携技
+[2026-08-17 07:47:07.155] 靠近敌人
+[2026-08-17 07:47:07.258] 触发干员1技能
+[2026-08-17 07:47:07.473] 触发连携技
+[2026-08-17 07:47:08.318] 触发连携技
+[2026-08-17 07:47:10.192] 找不到敌人，尝试锁定目标
+[2026-08-17 07:47:10.721] 触发干员2技能
+[2026-08-17 07:47:12.220] 靠近敌人
+[2026-08-17 07:47:17.379] 靠近敌人
+[2026-08-17 07:47:18.749] 触发干员3技能
+[2026-08-17 07:47:21.451] 触发闪避
+[2026-08-17 07:47:21.918] 触发连携技
+[2026-08-17 07:47:26.137] 触发干员4技能
+[2026-08-17 07:47:26.470] 靠近敌人
+[2026-08-17 07:47:27.860] 触发连携技
+[2026-08-17 07:47:29.223] 触发连携技
+[2026-08-17 07:47:30.489] 触发干员1技能
+[2026-08-17 07:47:31.313] 触发干员2技能
+[2026-08-17 07:47:31.532] 靠近敌人
+[2026-08-17 07:47:32.425] 触发闪避
+[2026-08-17 07:47:37.391] 靠近敌人
+[2026-08-17 07:47:38.527] 触发干员3技能
+[2026-08-17 07:47:39.901] 触发连携技
+[2026-08-17 07:47:44.849] 靠近敌人
+[2026-08-17 07:47:47.894] 找不到敌人，尝试锁定目标
+[2026-08-17 07:47:48.782] 触发干员4技能
+[2026-08-17 07:47:50.145] 靠近敌人
+[2026-08-17 07:47:50.603] 触发连携技
+[2026-08-17 07:47:51.669] 触发连携技
+[2026-08-17 07:47:51.936] 触发连携技
+[2026-08-17 07:47:52.812] 触发干员2终结技
+[2026-08-17 07:47:55.327] 触发连携技
+[2026-08-17 07:47:55.696] 靠近敌人
+[2026-08-17 07:48:00.791] 靠近敌人
+[2026-08-17 07:48:00.865] 触发干员1技能
+[2026-08-17 07:48:01.354] 触发闪避
+[2026-08-17 07:48:05.829] 敌人正在蓄力
+[2026-08-17 07:48:05.913] 触发干员2技能
+[2026-08-17 07:48:06.391] 靠近敌人
+[2026-08-17 07:48:06.798] 触发连携技
+[2026-08-17 07:48:07.147] 触发干员3终结技
+[2026-08-17 07:48:09.761] 触发干员4终结技
+[2026-08-17 07:48:12.778] 找不到敌人，尝试锁定目标
+[2026-08-17 07:48:15.820] 长时间找不到敌人，前进
+[2026-08-17 07:48:20.961] 靠近敌人
+[2026-08-17 07:48:21.316] 触发干员3技能
+[2026-08-17 07:48:22.680] 触发闪避
+[2026-08-17 07:48:23.326] 当前 1 号干员血量危险，切换到 2 号干员
+[2026-08-17 07:48:23.426] 当前 1 号干员血量危险，切换到 2 号干员
+[2026-08-17 07:48:23.503] 切换到干员2
+[2026-08-17 07:48:23.632] 当前 1 号干员血量危险，切换到 2 号干员
+[2026-08-17 07:48:23.704] 切换到干员2
+[2026-08-17 07:48:23.884] 当前 1 号干员血量危险，切换到 2 号干员
+[2026-08-17 07:48:23.955] 切换到干员2
+[2026-08-17 07:48:24.147] 切换到干员2
+[2026-08-17 07:48:26.896] 找不到敌人，尝试锁定目标
+[2026-08-17 07:48:27.657] 靠近敌人
+[2026-08-17 07:48:32.737] 靠近敌人
+[2026-08-17 07:48:33.911] 触发干员4技能
+[2026-08-17 07:48:38.430] 找不到敌人，尝试锁定目标
+[2026-08-17 07:48:38.940] 退出战斗场景
+[2026-08-17 07:48:42.546] 找不到退出点
+[2026-08-17 07:48:43.087] 找不到退出点
+[2026-08-17 07:48:43.693] 找不到退出点
+[2026-08-17 07:48:44.251] 找不到退出点
+[2026-08-17 07:48:44.435] 向退出点移动
+[2026-08-17 07:48:45.510] 向退出点移动
+[2026-08-17 07:48:46.542] 向退出点移动
+[2026-08-17 07:48:47.579] 向退出点移动
+[2026-08-17 07:48:48.641] 向退出点移动
+[2026-08-17 07:48:49.710] 向退出点移动
+[2026-08-17 07:48:50.748] 向退出点移动
+[2026-08-17 07:48:51.779] 向退出点移动
+[2026-08-17 07:48:53.298] 打开奖励
+[2026-08-17 07:48:55.414] 尝试使用理智消耗许可
+[2026-08-17 07:48:55.634] 理智不足，尝试不使用理智消耗许可
+[2026-08-17 07:48:56.431] 不使用理智消耗许可
+[2026-08-17 07:48:56.928] 确认领取奖励
+[31m[2026-08-17 07:48:59.301][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ADVANCED_COMBAT_RECORD_TEMPLATE templ size is too large [image=[124,82,16]] [templ=[79,95,16]] [0m
+[31m[2026-08-17 07:48:59.301][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ADVANCED_COMBAT_RECORD_TEMPLATE templ size is too large [image=[113,87,16]] [templ=[79,95,16]] [0m
+[31m[2026-08-17 07:48:59.331][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ARMS_INSP_KIT_TEMPLATE templ size is too large [image=[124,82,16]] [templ=[79,95,16]] [0m
+[31m[2026-08-17 07:48:59.331][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ARMS_INSP_KIT_TEMPLATE templ size is too large [image=[113,87,16]] [templ=[79,95,16]] [0m
+[31m[2026-08-17 07:48:59.362][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __CAST_DIE_TEMPLATE templ size is too large [image=[124,82,16]] [templ=[80,95,16]] [0m
+[31m[2026-08-17 07:48:59.362][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __CAST_DIE_TEMPLATE templ size is too large [image=[113,87,16]] [templ=[80,95,16]] [0m
+[31m[2026-08-17 07:48:59.515][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[114,91,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:48:59.521][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[114,75,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:48:59.521][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[133,82,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:48:59.521][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[129,92,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:48:59.521][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[115,74,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:48:59.521][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[114,77,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:48:59.521][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[122,82,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:48:59.521][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[115,87,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:48:59.521][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[141,79,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:48:59.535][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[124,77,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:48:59.535][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[116,68,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:48:59.535][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[136,90,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:48:59.535][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[114,74,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:48:59.535][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[115,74,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:48:59.535][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[122,82,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:48:59.535][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[58,184,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:48:59.648][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __OROBERYL_TEMPLATE templ size is too large [image=[111,80,16]] [templ=[79,95,16]] [0m
+[2026-08-17 07:48:59.901] 获得 D96钢样品四 ×6
+[2026-08-17 07:49:00.894] 理智不足，结束任务
+[2026-08-17 07:49:27.208] 任务完成: ⚔️协议空间 1
+[2026-08-17 07:49:27.452] 任务开始: ⚔️协议空间 2
+[2026-08-17 07:49:27.549] 现在游戏时间是周一，根据执行周期跳过任务
+[2026-08-17 07:49:27.623] 任务完成: ⚔️协议空间 2
+[2026-08-17 07:49:27.692] 任务开始: ⚔️协议空间 3
+[2026-08-17 07:49:27.760] 现在游戏时间是周一，根据执行周期跳过任务
+[2026-08-17 07:49:27.828] 任务完成: ⚔️协议空间 3
+[2026-08-17 07:49:27.910] 任务开始: ⚔️协议空间 4
+[2026-08-17 07:49:27.998] 现在游戏时间是周一，根据执行周期跳过任务
+[2026-08-17 07:49:28.076] 任务完成: ⚔️协议空间 4
+[2026-08-17 07:49:28.147] 任务开始: ⚔️协议空间 5
+[2026-08-17 07:49:28.223] 现在游戏时间是周一，根据执行周期跳过任务
+[2026-08-17 07:49:28.288] 任务完成: ⚔️协议空间 5
+[2026-08-17 07:49:28.350] 任务开始: ⚔️协议空间 6
+[2026-08-17 07:49:28.421] 现在游戏时间是周一，根据执行周期跳过任务
+[2026-08-17 07:49:28.483] 任务完成: ⚔️协议空间 6
+[2026-08-17 07:49:28.557] 任务开始: ⚔️协议空间 7
+[2026-08-17 07:49:28.634] 现在游戏时间是周一，根据执行周期跳过任务
+[2026-08-17 07:49:28.712] 任务完成: ⚔️协议空间 7
+[2026-08-17 07:49:28.782] 任务开始: 📅日常奖励领取
+[2026-08-17 07:49:28.870] 开始领取邮件奖励
+[2026-08-17 07:49:28.935] 没有未读邮件
+[2026-08-17 07:49:29.025] 开始领取每日任务奖励
+[31m[2026-08-17 07:49:38.159][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ADVANCED_COMBAT_RECORD_TEMPLATE templ size is too large [image=[117,79,16]] [templ=[79,95,16]] [0m
+[31m[2026-08-17 07:49:38.241][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ADVANCED_COMBAT_RECORD_TEMPLATE templ size is too large [image=[117,79,16]] [templ=[79,95,16]] [0m
+[31m[2026-08-17 07:49:38.278][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ARMS_INSP_KIT_TEMPLATE templ size is too large [image=[117,79,16]] [templ=[79,95,16]] [0m
+[31m[2026-08-17 07:49:38.481][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[78,30,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.481][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[24,30,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.481][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[104,30,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.481][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[137,30,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.481][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[105,30,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.481][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[105,30,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.481][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[106,30,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.481][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[117,30,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.481][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[110,29,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.481][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[112,19,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.481][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[102,3,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.481][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[106,1,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.481][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[113,1,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.487][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[147,63,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.487][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[197,63,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.487][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[100,92,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.487][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[62,95,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.487][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[76,85,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.487][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[118,77,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.487][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[115,74,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.487][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[76,89,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.487][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[108,90,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.487][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[122,76,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.497][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[139,86,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.507][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[125,83,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.507][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[134,70,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.507][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[133,83,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.507][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[115,79,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.507][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[148,90,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.547][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[124,82,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.582][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[21,308,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.582][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[109,81,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.586][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[40,111,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.590][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[28,117,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.595][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[113,78,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.595][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[113,82,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.595][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[48,79,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.598][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[48,82,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.598][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[115,88,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.598][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[119,88,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.602][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[107,82,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.603][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[117,81,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.603][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[124,94,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.609][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[107,90,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.613][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[105,92,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.616][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[106,94,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.622][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[107,89,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.651][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[108,83,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.661][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[107,94,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.661][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[111,83,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.664][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[23,216,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.674][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[106,86,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.674][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[125,83,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.679][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[127,76,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.679][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[125,76,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.679][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[63,86,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.679][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[124,78,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.691][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[72,90,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.691][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[100,78,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.697][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[49,96,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.701][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[15,133,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.706][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[100,73,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.715][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[100,65,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.718][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[100,94,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.721][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[86,78,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.721][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[100,78,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.721][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[238,63,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.721][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[19,61,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:49:38.721][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[100,53,16]] [templ=[79,96,16]] [0m
+[2026-08-17 07:49:39.226] 获得 高级作战记录 ×1
+[2026-08-17 07:49:39.308] 获得 武器检查套组 ×2
+[2026-08-17 07:49:39.392] 获得 嵌晶玉 ×200
+[2026-08-17 07:49:42.172] 开始领取「我转交的委托」奖励
+[31m[2026-08-17 07:50:01.501][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[150,30,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:50:01.501][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[197,30,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:50:01.501][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[132,22,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:50:01.501][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[123,69,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:50:01.501][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[131,78,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:50:01.514][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[108,90,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:50:01.517][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[112,86,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:50:01.602][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[108,91,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:50:01.605][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[109,87,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:50:01.605][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[111,82,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:50:01.623][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[113,74,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:50:01.623][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[115,82,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:50:01.623][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[125,77,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:50:01.631][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[115,90,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:50:01.631][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[113,78,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:50:01.631][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[113,75,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:50:01.635][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[114,80,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:50:01.641][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[120,91,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:50:01.641][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[118,87,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:50:01.642][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[144,83,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:50:01.657][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[110,84,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:50:01.657][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[118,77,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:50:01.657][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[120,90,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:50:01.657][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[110,84,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:50:01.667][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[109,94,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:50:01.667][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[110,90,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:50:01.671][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[108,88,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:50:01.671][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[111,83,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:50:01.674][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[110,90,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:50:01.675][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[108,84,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:50:01.678][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[112,90,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:50:01.678][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[115,85,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:50:01.678][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[113,85,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:50:01.678][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[109,90,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:50:01.678][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[113,94,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:50:01.681][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[105,88,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:50:01.681][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[121,90,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:50:01.681][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[111,82,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:50:01.681][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[110,82,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:50:01.697][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[106,91,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:50:01.713][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[115,78,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:50:01.713][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[118,73,16]] [templ=[79,96,16]] [0m
+[31m[2026-08-17 07:50:01.713][ERR][Px5860][Tx15015][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __ELEMENTARY_COMBAT_RECORD_TEMPLATE templ size is too large [image=[153,81,16]] [templ=[79,96,16]] [0m
+[2026-08-17 07:50:02.204] 获得 谷地调度券 ×323000
+[2026-08-17 07:50:06.438] 领取「我转交的委托」奖励完成
+[2026-08-17 07:50:06.657] 开始领取通行证奖励
+[2026-08-17 07:50:22.161] 开始领取活动奖励
+[2026-08-17 07:50:38.898] 跳过未支持的活动
+[31m[2026-08-17 07:50:39.509][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:39.526][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:39.545][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:39.563][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:39.581][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:39.599][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:39.618][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:39.637][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:39.659][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:39.679][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:39.696][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:39.716][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:39.732][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:39.751][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:39.770][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:39.787][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:39.806][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:39.824][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:39.842][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:39.860][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:39.878][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:39.897][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:39.914][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:39.934][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:39.951][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:39.970][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:39.987][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:40.006][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:40.024][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:40.042][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:40.061][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:42.326][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:42.345][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:42.363][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:42.381][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:42.399][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:42.418][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:42.448][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:42.467][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:42.484][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:42.501][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:42.520][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:42.538][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:42.557][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:42.575][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:42.592][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:42.611][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:42.629][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:42.648][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:42.665][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:42.684][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:42.702][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:42.720][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:42.738][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:42.757][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:42.776][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:42.793][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:42.812][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:42.829][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:42.849][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:42.866][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:42.887][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-17 07:50:42.903][ERR][Px5860][Tx15015][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[2026-08-17 07:50:46.891] 领取活动奖励结束
+[2026-08-17 07:50:47.339] 任务完成: 📅日常奖励领取
+[2026-08-17 07:50:47.446] 正在连接窗口... Endfield
+[2026-08-17 07:50:47.506] 窗口连接成功: Endfield
+[2026-08-17 07:50:47.983] 任务开始: ⛔ 结束进程
+[2026-08-17 07:50:48.210] 已通过快捷键开始任务：
+[2026-08-17 07:50:48.612] 任务完成: ⛔ 结束进程
+[2026-08-17 07:50:48.687] 任务开始: ⛔ 结束进程
+[2026-08-17 07:50:48.847] 任务完成: ⛔ 结束进程
+[2026-08-17 07:50:48.903] 任务开始: 停止任务
+[2026-08-17 07:50:48.964] 任务完成: 停止任务
+[2026-08-17 07:50:49.031] 任务开始: 停止任务
+[2026-08-17 07:50:49.110] 任务完成: 停止任务
+[0817/075049.605:ERROR:ui\gfx\win\window_impl.cc:172] Failed to unregister class Chrome_WidgetWin_0. Error = 1412
+
+E:\Games\DailyAutoTasks>call .\tasks\EnF\endArkE.bat 
+
+E:\Games\DailyAutoTasks>chcp 65001 
+Active code page: 65001
+
+E:\Games\DailyAutoTasks>taskkill /f /im Endfield.exe 
+ERROR: The process "Endfield.exe" with PID 16336 could not be terminated.
+Reason: There is no running instance of the task.
+
+E:\Games\DailyAutoTasks>REM taskkill /f /im MaaEnd.exe 
+
+E:\Games\DailyAutoTasks>echo [周一 2026/08/17  7:50:49.96] 调节亮度为50 
+[周一 2026/08/17  7:50:49.96] 调节亮度为50
+
+E:\Games\DailyAutoTasks>WMIC /NAMESPACE:\\root\wmi PATH WmiMonitorBrightnessMethods WHERE "Active=TRUE" CALL WmiSetBrightness Brightness=50 Timeout=0 
+Executing (\\LAPTOP-FM5T3Q6H\root\wmi:WmiMonitorBrightnessMethods.InstanceName="DISPLAY\\BOE0998\\4&15f1691e&0&UID8388688_0")->WmiSetBrightness()
+Method execution successful.
+
+E:\Games\DailyAutoTasks>echo [周一 2026/08/17  7:50:50.04] -----------------------MFW任务------------------------------ 
+[周一 2026/08/17  7:50:50.04] -----------------------MFW任务------------------------------
+
+E:\Games\DailyAutoTasks>call .\tasks\MFW\startMFW-FOS.bat 
+
+E:\Games\DailyAutoTasks>chcp 65001 
+Active code page: 65001
+
+E:\Games\DailyAutoTasks>setlocal enabledelayedexpansion 
+
+E:\Games\DailyAutoTasks>cd /d "E:\Games\DailyAutoTasks\tasks\MFW\" 
+
+E:\Games\DailyAutoTasks\tasks\MFW>cd ..\..\ 
+
+E:\Games\DailyAutoTasks>REM -----------------------MFW-FOS------------------------------- 
+
+E:\Games\DailyAutoTasks>REM 判断 
+
+E:\Games\DailyAutoTasks>set "idx=0" 
+
+E:\Games\DailyAutoTasks>for /F "tokens=1" %a in (.\config\MFWjudge.txt) do (
+set /a idx+=1  
+ if !idx! EQU 1 set "L1=%a" 
+) 
+
+E:\Games\DailyAutoTasks>(
+set /a idx+=1  
+ if !idx! EQU 1 set "L1=周日" 
+) 
+
+E:\Games\DailyAutoTasks>for /F "tokens=1" %a in ("!date!") do set "D=%a" 
+
+E:\Games\DailyAutoTasks>set "D=周一" 
+
+E:\Games\DailyAutoTasks>break  1>".\config\MFWjudge.txt" 
+
+E:\Games\DailyAutoTasks>echo !D!  1>".\config\MFWjudge.txt" 
+
+E:\Games\DailyAutoTasks>REM 启动 
+
+E:\Games\DailyAutoTasks>for /F "tokens=2 delims==" %a in ('findstr /b "path_fos=" ".\config\paths.ini"') do set "PATH_FOS=%a" 
+
+E:\Games\DailyAutoTasks>set "PATH_FOS=E:\MAA\MPA\FOS.exe" 
+
+E:\Games\DailyAutoTasks>if "!D!" == "!L1!" (echo 今日已运行，上一次（L1）：!L1!，今天（D）：!D!  1>>".\config\MFWjudge.txt" )  else (
+taskkill /f /im adb.exe  
+ call "" "!PATH_FOS!" --direct-run 
+) 
+SUCCESS: The process "adb.exe" with PID 11524 has been terminated.
+'""' is not recognized as an internal or external command,
+operable program or batch file.
+
+E:\Games\DailyAutoTasks>taskkill /f /im "MuMuPlayerService.exe" 
+ERROR: The process "MuMuPlayerService.exe" not found.
+
+E:\Games\DailyAutoTasks>echo [周一 2026/08/17  7:50:50.25] 取消系统静音 
+[周一 2026/08/17  7:50:50.25] 取消系统静音
+
+E:\Games\DailyAutoTasks>call .\tools\audioMute.exe unmute 
+
+E:\Games\DailyAutoTasks>if 1 EQU 1 (echo 周一 2026/08/17  7:50:50.42 声音已打开  1>>.\logs\音频日志.log )  else if 1 EQU 3 (echo 周一 2026/08/17  7:50:50.42 打开声音失败，错误码: 1  1>>.\logs\音频日志.log )  else (echo 周一 2026/08/17  7:50:50.42 错误码: 1。4是无效参数，5是参数不足。  1>>.\logs\音频日志.log ) 
+
+E:\Games\DailyAutoTasks>echo [周一 2026/08/17  7:50:50.42] -----------------------任务结束------------------------------ 
+[周一 2026/08/17  7:50:50.42] -----------------------任务结束------------------------------
+[周一 2026/08/17  7:50:50.43] 自动完成日常.bat执行完毕 
+[周一 2026/08/17  7:50:50.43] 停止性能采集器 
+The command completed successfully.
+The command completed successfully.
+[周一 2026/08/17  7:50:52.34] 性能监控已停止。 
