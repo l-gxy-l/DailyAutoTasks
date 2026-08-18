@@ -1,4 +1,4 @@
-@echo off
+REM @echo off
 chcp 65001
 echo [%date% %time%] 设置代码页为UTF-8，启用延迟扩展，检测管理员权限
 setlocal enabledelayedexpansion
