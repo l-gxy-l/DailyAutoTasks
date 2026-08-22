@@ -1,0 +1,809 @@
+﻿[周六 2026/08/22  5:00:02.66] 配置 logman 采集器 
+[周六 2026/08/22  5:00:02.66] 先删除可能重名的旧采集器 
+
+Error:
+Data Collector Set was not found.
+
+Error:
+Data Collector Set was not found.
+[周六 2026/08/22  5:00:02.72] 创建新的计数器采集器（记录内存百分比和可用 MB） 
+The command completed successfully.
+[周六 2026/08/22  5:00:02.99] 启动性能日志记录 
+The command completed successfully.
+[周六 2026/08/22  5:00:04.27] 性能监控已启动，数据保存到: .\logs\主脚本运行日志\2026-8-22_05-00-02-性能日志.blg 
+[周六 2026/08/22  5:00:04.27] 自动完成日常.bat开始执行 
+
+E:\Games\DailyAutoTasks>REM @echo off 
+
+E:\Games\DailyAutoTasks>chcp 65001 
+Active code page: 65001
+
+E:\Games\DailyAutoTasks>echo [周六 2026/08/22  5:00:04.28] 设置代码页为UTF-8，启用延迟扩展，检测管理员权限 
+[周六 2026/08/22  5:00:04.28] 设置代码页为UTF-8，启用延迟扩展，检测管理员权限
+
+E:\Games\DailyAutoTasks>setlocal enabledelayedexpansion 
+
+E:\Games\DailyAutoTasks>NET SESSION  1>nul 2>&1 
+
+E:\Games\DailyAutoTasks>if 0 NEQ 0 (
+echo 请右键以管理员身份运行此脚本！  
+ pause 
+ exit
+) 
+
+E:\Games\DailyAutoTasks>cd /d "E:\Games\DailyAutoTasks\" 
+
+E:\Games\DailyAutoTasks>echo [周六 2026/08/22  5:00:04.31] 关闭系统声音 
+[周六 2026/08/22  5:00:04.31] 关闭系统声音
+
+E:\Games\DailyAutoTasks>call .\tools\audioMute.exe mute 
+
+E:\Games\DailyAutoTasks>if 0 EQU 0 (echo 周六 2026/08/22  5:00:05.11 已静音  1>>.\logs\音频日志.log )  else if 0 EQU 2 (echo 周六 2026/08/22  5:00:05.11 静音失败，错误码: 0  1>>.\logs\音频日志.log )  else (echo 周六 2026/08/22  5:00:05.11 错误码: 0。4是无效参数，5是参数不足。  1>>.\logs\音频日志.log ) 
+
+E:\Games\DailyAutoTasks>echo [周六 2026/08/22  5:00:05.11] 调亮度 
+[周六 2026/08/22  5:00:05.11] 调亮度
+
+E:\Games\DailyAutoTasks>WMIC /NAMESPACE:\\root\wmi PATH WmiMonitorBrightnessMethods WHERE "Active=TRUE" CALL WmiSetBrightness Brightness=1 Timeout=0 
+Executing (\\LAPTOP-FM5T3Q6H\root\wmi:WmiMonitorBrightnessMethods.InstanceName="DISPLAY\\BOE0998\\4&15f1691e&0&UID8388688_0")->WmiSetBrightness()
+Method execution successful.
+
+E:\Games\DailyAutoTasks>echo [周六 2026/08/22  5:00:05.17] ----------------------领取时长------------------------------ 
+[周六 2026/08/22  5:00:05.17] ----------------------领取时长------------------------------
+
+E:\Games\DailyAutoTasks>start .\tools\GIcloud.url   1>nul 2>&1 
+
+E:\Games\DailyAutoTasks>echo [周六 2026/08/22  5:00:05.39] -----------------------MAA任务------------------------------ 
+[周六 2026/08/22  5:00:05.39] -----------------------MAA任务------------------------------
+
+E:\Games\DailyAutoTasks>echo [周六 2026/08/22  5:00:05.39] 开模拟器 
+[周六 2026/08/22  5:00:05.39] 开模拟器
+
+E:\Games\DailyAutoTasks>taskkill /f /im adb.exe 
+ERROR: The process "adb.exe" not found.
+
+E:\Games\DailyAutoTasks>for /F "tokens=2 delims==" %a in ('findstr /b "path_mumu=" ".\config\paths.ini"') do set "PATH_MUMU=%a" 
+
+E:\Games\DailyAutoTasks>set "PATH_MUMU=E:\YXArkNights-12.0\shell\MuMuPlayer.exe" 
+
+E:\Games\DailyAutoTasks>start "" "!PATH_MUMU!"   1>nul 2>&1 
+
+E:\Games\DailyAutoTasks>timeout /t 15 
+
+Waiting for 15 seconds, press a key to continue ...1413121110 9 8 7 6 5 4 3 2 1 0
+
+E:\Games\DailyAutoTasks>echo [周六 2026/08/22  5:00:20.16] 关浏览器 
+[周六 2026/08/22  5:00:20.16] 关浏览器
+
+E:\Games\DailyAutoTasks>taskkill /IM msedge.exe 
+SUCCESS: Sent termination signal to the process "msedge.exe" with PID 14292.
+SUCCESS: Sent termination signal to the process "msedge.exe" with PID 13876.
+SUCCESS: Sent termination signal to the process "msedge.exe" with PID 9320.
+SUCCESS: Sent termination signal to the process "msedge.exe" with PID 10808.
+ERROR: The process "msedge.exe" with PID 16504 could not be terminated.
+Reason: This process can only be terminated forcefully (with /F option).
+ERROR: The process "msedge.exe" with PID 10260 could not be terminated.
+Reason: This process can only be terminated forcefully (with /F option).
+ERROR: The process "msedge.exe" with PID 4332 could not be terminated.
+Reason: This process can only be terminated forcefully (with /F option).
+ERROR: The process "msedge.exe" with PID 7720 could not be terminated.
+Reason: This process can only be terminated forcefully (with /F option).
+ERROR: The process "msedge.exe" with PID 16424 could not be terminated.
+Reason: This process can only be terminated forcefully (with /F option).
+ERROR: The process "msedge.exe" with PID 2064 could not be terminated.
+Reason: This process can only be terminated forcefully (with /F option).
+ERROR: The process "msedge.exe" with PID 14480 could not be terminated.
+Reason: This process can only be terminated forcefully (with /F option).
+ERROR: The process "msedge.exe" with PID 7996 could not be terminated.
+Reason: This process can only be terminated forcefully (with /F option).
+ERROR: The process "msedge.exe" with PID 7724 could not be terminated.
+Reason: This process can only be terminated forcefully (with /F option).
+ERROR: The process "msedge.exe" with PID 13412 could not be terminated.
+Reason: This process can only be terminated forcefully (with /F option).
+ERROR: The process "msedge.exe" with PID 13920 could not be terminated.
+Reason: This process can only be terminated forcefully (with /F option).
+
+E:\Games\DailyAutoTasks>echo [周六 2026/08/22  5:00:20.25] MAA 
+[周六 2026/08/22  5:00:20.25] MAA
+
+E:\Games\DailyAutoTasks>for /F "tokens=2 delims==" %a in ('findstr /b "path_maa=" ".\config\paths.ini"') do set "PATH_MAA=%a" 
+
+E:\Games\DailyAutoTasks>set "PATH_MAA=E:\Games\MAA-明日方舟脚本\MAA.exe" 
+
+E:\Games\DailyAutoTasks>start "" "!PATH_MAA!"   1>nul 2>&1 
+
+E:\Games\DailyAutoTasks>timeout /t 30 
+
+Waiting for 30 seconds, press a key to continue ...2928272625242322212019181716151413121110 9 8 7 6 5 4 3 2 1 0
+
+E:\Games\DailyAutoTasks>echo [周六 2026/08/22  5:00:50.11] -----------------------BGI任务------------------------------ 
+[周六 2026/08/22  5:00:50.11] -----------------------BGI任务------------------------------
+
+E:\Games\DailyAutoTasks>explorer.exe shell:::{3080F90D-D7AD-11D9-BD98-0000947B0257} 
+
+E:\Games\DailyAutoTasks>call .\tasks\BGI\BGIAutoRun.bat 
+
+E:\Games\DailyAutoTasks>REM  设置代码页为UTF-8，启用延迟扩展 
+
+E:\Games\DailyAutoTasks>chcp 65001 
+Active code page: 65001
+
+E:\Games\DailyAutoTasks>setlocal enabledelayedexpansion 
+
+E:\Games\DailyAutoTasks>REM  切换到主文件根目录 
+
+E:\Games\DailyAutoTasks>cd /d "E:\Games\DailyAutoTasks\tasks\BGI\" 
+
+E:\Games\DailyAutoTasks\tasks\BGI>cd ..\..\ 
+
+E:\Games\DailyAutoTasks>REM -----------------------------------------Loop计算------------------------------------------------------ 
+
+E:\Games\DailyAutoTasks>REM 读judge文件，赋值给LX。文件5行内容的意义如下： 
+
+E:\Games\DailyAutoTasks>L1 0-囤 1-刷 
+'L1' is not recognized as an internal or external command,
+operable program or batch file.
+
+E:\Games\DailyAutoTasks>REM L2 1-A 2-B 3-C 
+
+E:\Games\DailyAutoTasks>REM L3 ABAC的分支判断-分支1或2 
+
+E:\Games\DailyAutoTasks>REM 4  错误信息 
+
+E:\Games\DailyAutoTasks>REM LP 上一次的循环数，即上次运行bat时计算得到的预设名 
+
+E:\Games\DailyAutoTasks>期或错误信息
+'期或错误信息' is not recognized as an internal or external command,
+operable program or batch file.
+
+E:\Games\DailyAutoTasks>set "idx=0" 
+
+E:\Games\DailyAutoTasks>for /F "tokens=1" %a in (.\config\BGIjudge.txt) do (
+set /a idx+=1  
+ if !idx! EQU 1 set "L1=%a"  
+ if !idx! EQU 2 set "L2=%a"  
+ if !idx! EQU 3 set "L3=%a"  
+ if !idx! EQU 5 set "LP=%a"  
+ if !idx! EQU 6 set "L6=%a" 
+) 
+
+E:\Games\DailyAutoTasks>(
+set /a idx+=1  
+ if !idx! EQU 1 set "L1=0"  
+ if !idx! EQU 2 set "L2=0"  
+ if !idx! EQU 3 set "L3=0"  
+ if !idx! EQU 5 set "LP=0"  
+ if !idx! EQU 6 set "L6=0" 
+) 
+
+E:\Games\DailyAutoTasks>(
+set /a idx+=1  
+ if !idx! EQU 1 set "L1=3"  
+ if !idx! EQU 2 set "L2=3"  
+ if !idx! EQU 3 set "L3=3"  
+ if !idx! EQU 5 set "LP=3"  
+ if !idx! EQU 6 set "L6=3" 
+) 
+
+E:\Games\DailyAutoTasks>(
+set /a idx+=1  
+ if !idx! EQU 1 set "L1=1"  
+ if !idx! EQU 2 set "L2=1"  
+ if !idx! EQU 3 set "L3=1"  
+ if !idx! EQU 5 set "LP=1"  
+ if !idx! EQU 6 set "L6=1" 
+) 
+
+E:\Games\DailyAutoTasks>(
+set /a idx+=1  
+ if !idx! EQU 1 set "L1=无错误"  
+ if !idx! EQU 2 set "L2=无错误"  
+ if !idx! EQU 3 set "L3=无错误"  
+ if !idx! EQU 5 set "LP=无错误"  
+ if !idx! EQU 6 set "L6=无错误" 
+) 
+
+E:\Games\DailyAutoTasks>(
+set /a idx+=1  
+ if !idx! EQU 1 set "L1=A"  
+ if !idx! EQU 2 set "L2=A"  
+ if !idx! EQU 3 set "L3=A"  
+ if !idx! EQU 5 set "LP=A"  
+ if !idx! EQU 6 set "L6=A" 
+) 
+
+E:\Games\DailyAutoTasks>(
+set /a idx+=1  
+ if !idx! EQU 1 set "L1=周五"  
+ if !idx! EQU 2 set "L2=周五"  
+ if !idx! EQU 3 set "L3=周五"  
+ if !idx! EQU 5 set "LP=周五"  
+ if !idx! EQU 6 set "L6=周五" 
+) 
+
+E:\Games\DailyAutoTasks>REM 计算下一次BGI需要执行的预设，其中N是next day的意思，T是today的意思 
+
+E:\Games\DailyAutoTasks>N1 0-囤 1-刷 
+'N1' is not recognized as an internal or external command,
+operable program or batch file.
+
+E:\Games\DailyAutoTasks>REM N2 1-A 2-B 3-C 
+
+E:\Games\DailyAutoTasks>REM N3 ABAC的分支判断-分支1或2 
+
+E:\Games\DailyAutoTasks>REM N  错误信息 
+
+E:\Games\DailyAutoTasks>REM T5 今天计算得到的预设名 
+
+E:\Games\DailyAutoTasks>REM T6 今天日期或错误信息 
+
+E:\Games\DailyAutoTasks>set "N1=0" 
+
+E:\Games\DailyAutoTasks>set "N2=1" 
+
+E:\Games\DailyAutoTasks>set "N3=1" 
+
+E:\Games\DailyAutoTasks>set "N4=无错误" 
+
+E:\Games\DailyAutoTasks>set "T5=囤" 
+
+E:\Games\DailyAutoTasks>for /F "tokens=1" %a in ("!date!") do set "T6=%a" 
+
+E:\Games\DailyAutoTasks>set "T6=周六" 
+
+E:\Games\DailyAutoTasks>REM 输出到调试txt，共4行，如果运行过了则再打印到第5行,两个break：不知道为什么有时候首个break会不清空文件 
+
+E:\Games\DailyAutoTasks>break  1>".\logs\BGI调试日志.log" 
+
+E:\Games\DailyAutoTasks>break  1>".\logs\BGI调试日志.log" 
+
+E:\Games\DailyAutoTasks>echo 上次运行日期L6==!L6!  1>>".\logs\BGI调试日志.log" 
+
+E:\Games\DailyAutoTasks>echo 今天运行日期T6==!T6!  1>>".\logs\BGI调试日志.log" 
+
+E:\Games\DailyAutoTasks>echo 循环数信息：L1,L2,L3==!L1!,!L2!,!L3!  1>>".\logs\BGI调试日志.log" 
+
+E:\Games\DailyAutoTasks>echo 循环数计算结果：上一次循环数（LP）是：!LP!，本次运行的循环数T5是：!T5!  1>>".\logs\BGI调试日志.log" 
+
+E:\Games\DailyAutoTasks>REM 进行循环数计算并赋给T5 
+
+E:\Games\DailyAutoTasks>if "!T6!" == "!L6!" (
+set T5=!LP!  
+ echo T6（!T6!）==L6（!L6!），今天已经计算过了~  1>>".\logs\BGI调试日志.log" 
+)  else (
+if "!L1!" == "0" (
+set "T5=囤"  
+ set "N1=1"  
+ set "N2=!L2!"  
+ set "N3=!L3!" 
+)  else if "!L1!" == "1" (
+set "N1=0"  
+ if "!L2!" == "1" (
+set "T5=A"	  
+ if "!L3!" == "1" (
+set "N2=2"  
+ set "N3=2" 
+)  else if "!L3!" == "2" (
+set "N2=3"  
+ set "N3=1" 
+)  else (
+set "N4=BGIjudge文件里的---L3---循环数出现错误,但问题不大，会导致后天的刷C变成刷B。"  
+ echo [ERROR]!date!,!time!:!N4!  1>>".\logs\BGI循环日志.log" 
+) 
+)  else if "!L2!" == "2" (
+set "T5=B"  
+ set "N2=1"  
+ set "N3=!L3!" 
+)  else if "!L2!" == "3" (
+set "T5=C"  
+ set "N2=1"  
+ set "N3=!L3!"		 
+)  else (
+set "N4=BGIjudge文件里的---L2---循环数出现错误，本次无法运行BGI"  
+ echo [ERROR]!date!,!time!:!N4!  1>>".\logs\BGI循环日志.log"  
+ set "T6=L2循环数出现错误，算作今日未运行，最好重开这个bat文件" 
+) 
+)  else (
+set "N4=BGIjudge文件里---L1---的循环数出现错误，本次无法运行BGI"  
+ echo [ERROR]!date!,!time!:!N4!  1>>".\logs\BGI循环日志.log"  
+ set "T6=L1的循环数出现错误，算作今日未运行，最好重开这个bat文件" 
+)  
+ break  1>".\config\BGIjudge.txt"  
+ echo !N1!  1>>".\config\BGIjudge.txt"  
+ echo !N2!  1>>".\config\BGIjudge.txt"  
+ echo !N3!  1>>".\config\BGIjudge.txt"  
+ echo !N4!  1>>".\config\BGIjudge.txt"  
+ echo !T5!  1>>".\config\BGIjudge.txt"  
+ echo !T6!  1>>".\config\BGIjudge.txt" 
+) 
+
+E:\Games\DailyAutoTasks>REM 导入BGI路径---------------------------------------------------------------------------------------- 
+
+E:\Games\DailyAutoTasks>for /F "tokens=2 delims==" %a in ('findstr /b "path_bgi=" ".\config\paths.ini"') do set "PATH_BGI=%a" 
+
+E:\Games\DailyAutoTasks>set "PATH_BGI=E:\Games\BetterGI\BetterGI.exe" 
+
+E:\Games\DailyAutoTasks>REM 根据T5的值决定启动哪一个BGI预设 
+
+E:\Games\DailyAutoTasks>if "!T5!" == "囤" (
+echo !date!,!time!运行了配置---囤体力  1>>".\logs\BGI循环日志.log"  
+ "!PATH_BGI!" --startOneDragon 循环囤体力 
+)  else if "!T5!" == "A" (
+echo !date!,!time!运行了配置---循环A  1>>".\logs\BGI循环日志.log"  
+ "!PATH_BGI!" --startOneDragon 循环A 
+)  else if "!T5!" == "B" (
+echo !date!,!time!运行了配置---循环B  1>>".\logs\BGI循环日志.log"  
+ "!PATH_BGI!" --startOneDragon 循环B 
+)  else if "!T5!" == "C" (
+echo !date!,!time!运行了配置---循环C  1>>".\logs\BGI循环日志.log"  
+ "!PATH_BGI!" --startOneDragon 循环C 
+)  else (
+echo [ERROR]!date!,!time!:主程序执行出错，缺少可用数值的L1 1>>".\logs\BGI循环日志.log"  
+ set "T6=上一次主程序执行出错，算作今日未运行，最好重开这个bat文件" 
+) 
+
+E:\Games\DailyAutoTasks>taskkill /f /im "MuMuPlayerService.exe" 
+SUCCESS: The process "MuMuPlayerService.exe" with PID 10848 has been terminated.
+
+E:\Games\DailyAutoTasks>echo [周六 2026/08/22  6:55:43.44] -----------------------HSR任务------------------------------ 
+[周六 2026/08/22  6:55:43.44] -----------------------HSR任务------------------------------
+
+E:\Games\DailyAutoTasks>for /F "tokens=2 delims==" %a in ('findstr /b "path_march7th=" ".\config\paths.ini"') do set "PATH_MARCH7TH=%a" 
+
+E:\Games\DailyAutoTasks>set "PATH_MARCH7TH=E:\Games\miHoYo Launcher\games\March7thAssistant\March7th Launcher.exe" 
+
+E:\Games\DailyAutoTasks>call "!PATH_MARCH7TH!" -S main -e 
++-------------------------------------------------------------------------------------------------------------------+
+|                                            ��ӭʹ�� March7th Assistant                                            |
+|                                   https://github.com/moesnow/March7thAssistant                                    |
+|                                                                                                                   |
+|                                    �˳���Ϊ��ѿ�Դ��Ŀ ����㸶��Ǯ�������˿�                                    |
++-------------------------------------------------------------------------------------------------------------------+
+2026-08-22 06:55:58,725 | INFO | GitHub ȷ���������°汾: v2026.7.26
+
+E:\Games\DailyAutoTasks>call ".\tasks\HSR\endHSR.bat" 
+
+E:\Games\DailyAutoTasks>chcp 65001 
+Active code page: 65001
+
+E:\Games\DailyAutoTasks>taskkill /f /im StarRail.exe 
+ERROR: The process "StarRail.exe" not found.
+
+E:\Games\DailyAutoTasks>taskkill /f /im PaddleOCR-json.exe 
+ERROR: The process "PaddleOCR-json.exe" not found.
+
+E:\Games\DailyAutoTasks>taskkill /f /im "March7th Launcher.exe" 
+ERROR: The process "March7th Launcher.exe" not found.
+
+E:\Games\DailyAutoTasks>echo [周六 2026/08/22  7:03:37.59] -----------------------EnF任务------------------------------ 
+[周六 2026/08/22  7:03:37.59] -----------------------EnF任务------------------------------
+
+E:\Games\DailyAutoTasks>call .\tasks\EnF\startMaaEnd.bat 
+
+E:\Games\DailyAutoTasks>chcp 65001 
+Active code page: 65001
+
+E:\Games\DailyAutoTasks>setlocal enabledelayedexpansion 
+
+E:\Games\DailyAutoTasks>cd /d "E:\Games\DailyAutoTasks\tasks\EnF\" 
+
+E:\Games\DailyAutoTasks\tasks\EnF>cd ..\..\ 
+
+E:\Games\DailyAutoTasks>REM -----------------------EnF任务------------------------------ 
+
+E:\Games\DailyAutoTasks>for /F "tokens=2 delims==" %a in ('findstr /b "path_maaend=" ".\config\paths.ini"') do set "PATH_MAAEND=%a" 
+
+E:\Games\DailyAutoTasks>set "PATH_MAAEND=E:\Games\MaaEnd\MaaEnd.exe" 
+
+E:\Games\DailyAutoTasks>call "!PATH_MAAEND!" --autostart -i="Normal" 
+[0822/070413.738:ERROR:ui\gfx\win\window_impl.cc:172] Failed to unregister class Chrome_WidgetWin_0. Error = 1412
+
+E:\Games\DailyAutoTasks>call .\tasks\EnF\endArkE.bat 
+
+E:\Games\DailyAutoTasks>chcp 65001 
+Active code page: 65001
+
+E:\Games\DailyAutoTasks>taskkill /f /im Endfield.exe 
+ERROR: The process "Endfield.exe" not found.
+
+E:\Games\DailyAutoTasks>REM taskkill /f /im MaaEnd.exe 
+
+E:\Games\DailyAutoTasks>echo [周六 2026/08/22  7:04:14.00] 调节亮度为50 
+[周六 2026/08/22  7:04:14.00] 调节亮度为50
+
+E:\Games\DailyAutoTasks>WMIC /NAMESPACE:\\root\wmi PATH WmiMonitorBrightnessMethods WHERE "Active=TRUE" CALL WmiSetBrightness Brightness=50 Timeout=0 
+Executing (\\LAPTOP-FM5T3Q6H\root\wmi:WmiMonitorBrightnessMethods.InstanceName="DISPLAY\\BOE0998\\4&15f1691e&0&UID8388688_0")->WmiSetBrightness()
+Method execution successful.
+
+E:\Games\DailyAutoTasks>echo [周六 2026/08/22  7:04:14.14] -----------------------MFW任务------------------------------ 
+[周六 2026/08/22  7:04:14.14] -----------------------MFW任务------------------------------
+
+E:\Games\DailyAutoTasks>call .\tasks\MFW\startMFW-FOS.bat 
+
+E:\Games\DailyAutoTasks>chcp 65001 
+Active code page: 65001
+
+E:\Games\DailyAutoTasks>setlocal enabledelayedexpansion 
+
+E:\Games\DailyAutoTasks>cd /d "E:\Games\DailyAutoTasks\tasks\MFW\" 
+
+E:\Games\DailyAutoTasks\tasks\MFW>cd ..\..\ 
+
+E:\Games\DailyAutoTasks>REM -----------------------MFW-FOS------------------------------- 
+
+E:\Games\DailyAutoTasks>REM 判断 
+
+E:\Games\DailyAutoTasks>set "idx=0" 
+
+E:\Games\DailyAutoTasks>for /F "tokens=1" %a in (.\config\MFWjudge.txt) do (
+set /a idx+=1  
+ if !idx! EQU 1 set "L1=%a" 
+) 
+
+E:\Games\DailyAutoTasks>(
+set /a idx+=1  
+ if !idx! EQU 1 set "L1=周五" 
+) 
+
+E:\Games\DailyAutoTasks>for /F "tokens=1" %a in ("!date!") do set "D=%a" 
+
+E:\Games\DailyAutoTasks>set "D=周六" 
+
+E:\Games\DailyAutoTasks>break  1>".\config\MFWjudge.txt" 
+
+E:\Games\DailyAutoTasks>echo !D!  1>".\config\MFWjudge.txt" 
+
+E:\Games\DailyAutoTasks>REM 启动 
+
+E:\Games\DailyAutoTasks>for /F "tokens=2 delims==" %a in ('findstr /b "path_fos=" ".\config\paths.ini"') do set "PATH_FOS=%a" 
+
+E:\Games\DailyAutoTasks>set "PATH_FOS=E:\Games\FOS\FOS.exe" 
+
+E:\Games\DailyAutoTasks>if "!D!" == "!L1!" (echo 今日已运行，上一次（L1）：!L1!，今天（D）：!D!  1>>".\config\MFWjudge.txt" )  else (
+taskkill /f /im adb.exe  
+ call "" "!PATH_FOS!" --direct-run 
+) 
+SUCCESS: The process "adb.exe" with PID 6024 has been terminated.
+'""' is not recognized as an internal or external command,
+operable program or batch file.
+
+E:\Games\DailyAutoTasks>taskkill /f /im "MuMuPlayerService.exe" 
+ERROR: The process "MuMuPlayerService.exe" not found.
+
+E:\Games\DailyAutoTasks>echo [周六 2026/08/22  7:04:14.48] 取消系统静音 
+[周六 2026/08/22  7:04:14.48] 取消系统静音
+
+E:\Games\DailyAutoTasks>call .\tools\audioMute.exe unmute 
+
+E:\Games\DailyAutoTasks>if 1 EQU 1 (echo 周六 2026/08/22  7:04:14.76 声音已打开  1>>.\logs\音频日志.log )  else if 1 EQU 3 (echo 周六 2026/08/22  7:04:14.76 打开声音失败，错误码: 1  1>>.\logs\音频日志.log )  else (echo 周六 2026/08/22  7:04:14.76 错误码: 1。4是无效参数，5是参数不足。  1>>.\logs\音频日志.log ) 
+
+E:\Games\DailyAutoTasks>echo [周六 2026/08/22  7:04:14.76] -----------------------任务结束------------------------------ 
+[周六 2026/08/22  7:04:14.76] -----------------------任务结束------------------------------
+[2026-08-22 07:04:16.856] 检测到快捷键: （开始任务）
+[2026-08-22 07:04:16.910] 正在执行预任务: ⚙️游戏设置
+[2026-08-22 07:04:17.186] 预任务执行完成: ⚙️游戏设置
+[2026-08-22 07:04:17.257] 正在执行前置程序: Endfield.exe...
+[2026-08-22 07:04:17.352] 前置程序 Endfield.exe 执行完成
+[2026-08-22 07:04:17.388] 正在等待窗口「Endfield」就绪...
+[2026-08-22 07:04:41.758] 窗口已就绪
+[2026-08-22 07:04:47.285] 正在连接窗口... Endfield
+[2026-08-22 07:04:47.339] 窗口连接成功: Endfield
+[2026-08-22 07:04:47.451] 等待 5 秒后连接...
+[2026-08-22 07:04:52.882] 正在加载资源: 通用资源（目前仅简中支持较好）
+[2026-08-22 07:04:53.701] 资源加载成功: 通用资源（目前仅简中支持较好）
+[2026-08-22 07:04:55.544] 任务开始: 🎒存放背包
+[2026-08-22 07:06:06.647] 任务完成: 🎒存放背包
+[2026-08-22 07:06:06.710] 任务开始: 🛒售卖产品
+[2026-08-22 07:06:14.497] 正在检查画面，提示登出账号是正常现象，会自动取消
+[31m[2026-08-22 07:06:15.146][ERR][Px9064][Tx32757][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __CancelButtonType1Icon templ size is too large [image=[258,20,16]] [templ=[29,29,16]] [0m
+[31m[2026-08-22 07:06:15.151][ERR][Px9064][Tx32757][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __CancelButtonType1HoverIcon templ size is too large [image=[258,20,16]] [templ=[29,29,16]] [0m
+[31m[2026-08-22 07:06:15.156][ERR][Px9064][Tx32757][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __CancelButtonType1LineIcon templ size is too large [image=[258,20,16]] [templ=[28,30,16]] [0m
+[31m[2026-08-22 07:06:15.160][ERR][Px9064][Tx32757][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __CancelButtonType1LineHoverIcon templ size is too large [image=[258,20,16]] [templ=[26,26,16]] [0m
+[2026-08-22 07:06:15.983] 画面检查通过
+[31m[2026-08-22 07:06:16.022][ERR][Px9064][Tx32757][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __CancelButtonType1Icon templ size is too large [image=[258,20,16]] [templ=[29,29,16]] [0m
+[31m[2026-08-22 07:06:16.026][ERR][Px9064][Tx32757][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __CancelButtonType1HoverIcon templ size is too large [image=[258,20,16]] [templ=[29,29,16]] [0m
+[31m[2026-08-22 07:06:16.030][ERR][Px9064][Tx32757][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __CancelButtonType1LineIcon templ size is too large [image=[258,20,16]] [templ=[28,30,16]] [0m
+[31m[2026-08-22 07:06:16.034][ERR][Px9064][Tx32757][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __CancelButtonType1LineHoverIcon templ size is too large [image=[258,20,16]] [templ=[26,26,16]] [0m
+[31m[2026-08-22 07:06:16.463][ERR][Px9064][Tx32757][ActionHelper.cpp][L30][MaaNS::TaskNS::ActionHelper::wait_freezes] failed to get target rect for wait_freezes [noti_ctx.name=__SceneImageCheckFinishExitSuccess] [0m
+[2026-08-22 07:06:23.905] 👥 已加载干员列表缓存（更新于 2026-08-04 08:53:58），将直接进行干员规划
+[2026-08-22 07:06:25.079] 📋 天王坪援建点当前计划
+[2026-08-22 07:06:25.079] 👤 售卖干员目标：狼卫；售后生产派驻目标：狼卫
+[2026-08-22 07:06:25.079] 📦 售卖顺序：芽针针剂 → 重息壤 → 赫铜零件 → 中容武陵电池 → 低容武陵电池 → 优质芽针针剂 → 优质锦草软饮 → 锦草软饮 → 赤铜零件 → 息壤
+[2026-08-22 07:06:25.079] 🚫 缺货排除：无
+[2026-08-22 07:06:25.079] 🎯 保留量已满足：无
+[2026-08-22 07:06:25.079] ⛔ 用户排除：无
+[2026-08-22 07:06:25.079] 🧰 保留规则：重息壤保留 10000、赫铜零件保留 10000、赤铜零件保留 10000、息壤保留 10000
+[2026-08-22 07:06:25.319] 👤 售卖干员沿用：狼卫（天王坪援建点）
+[2026-08-22 07:06:27.971] 📦 已切换货品：芽针针剂（天王坪援建点）
+[2026-08-22 07:06:31.837] ✅ 已完成交易
+[2026-08-22 07:06:32.161] 📭 当前货品缺货，继续尝试下一货品
+[2026-08-22 07:06:32.220] 🚫 已确认缺货并排除：芽针针剂（天王坪援建点）
+[2026-08-22 07:06:34.597] 📦 已切换货品：重息壤（天王坪援建点）
+[2026-08-22 07:06:47.033] ✅ 已完成交易
+[2026-08-22 07:06:47.173] 🎯 重息壤已达到保留数量 10000，本次任务后续据点将跳过该产品
+[2026-08-22 07:06:49.596] 📦 已切换货品：赫铜零件（天王坪援建点）
+[2026-08-22 07:07:02.196] ✅ 已完成交易
+[2026-08-22 07:07:02.340] 🎯 赫铜零件已达到保留数量 10000，本次任务后续据点将跳过该产品
+[2026-08-22 07:07:04.867] 📦 已切换货品：中容武陵电池（天王坪援建点）
+[2026-08-22 07:07:08.674] ✅ 已完成交易
+[2026-08-22 07:07:09.134] 👤 售后生产干员沿用：狼卫（天王坪援建点）
+[2026-08-22 07:07:11.487] 📋 心脏修缮站当前计划
+[2026-08-22 07:07:11.487] 👤 售卖干员目标：庄方宜；售后生产派驻目标：庄方宜
+[2026-08-22 07:07:11.487] 📦 售卖顺序：灼铜零件 → 中容武陵电池 → 优质锦草软饮 → 息壤
+[2026-08-22 07:07:11.487] 🚫 缺货排除：低容武陵电池、优质芽针针剂
+[2026-08-22 07:07:11.487] 🎯 保留量已满足：重息壤、赫铜零件
+[2026-08-22 07:07:11.487] ⛔ 用户排除：无
+[2026-08-22 07:07:11.487] 🧰 保留规则：灼铜零件保留 10000、息壤保留 10000、重息壤保留 10000、赫铜零件保留 10000
+[2026-08-22 07:07:11.737] 👤 售卖干员沿用：庄方宜（心脏修缮站）
+[2026-08-22 07:07:14.180] 📦 已切换货品：灼铜零件（心脏修缮站）
+[2026-08-22 07:07:18.071] ✅ 已完成交易
+[2026-08-22 07:07:18.396] 👤 售后生产干员沿用：庄方宜（心脏修缮站）
+[2026-08-22 07:07:20.627] 📋 盈天台建设站当前计划
+[2026-08-22 07:07:20.627] 👤 售卖干员目标：诀；售后生产派驻目标：诀
+[2026-08-22 07:07:20.627] 📦 售卖顺序：灼铜零件 → 分离芯 → 中容武陵电池 → 优质锦草软饮 → 息壤
+[2026-08-22 07:07:20.627] 🚫 缺货排除：优质芽针针剂
+[2026-08-22 07:07:20.627] 🎯 保留量已满足：重息壤
+[2026-08-22 07:07:20.627] ⛔ 用户排除：无
+[2026-08-22 07:07:20.627] 🧰 保留规则：灼铜零件保留 10000、分离芯保留 10000、息壤保留 10000、重息壤保留 10000
+[2026-08-22 07:07:20.887] 👤 售卖干员沿用：诀（盈天台建设站）
+[2026-08-22 07:07:23.324] 📦 已切换货品：灼铜零件（盈天台建设站）
+[2026-08-22 07:07:27.043] ✅ 已完成交易
+[2026-08-22 07:07:27.365] 👤 售后生产干员沿用：诀（盈天台建设站）
+[2026-08-22 07:07:35.500] 📋 难民暂居处当前计划
+[2026-08-22 07:07:35.500] 👤 售卖干员目标：卡缪；售后生产派驻目标：卡缪
+[2026-08-22 07:07:35.500] 📦 售卖顺序：柑实罐头 → 精选荞愈胶囊 → 高容谷地电池 → 精选柑实罐头 → 中容谷地电池 → 优质荞愈胶囊 → 优质柑实罐头 → 荞愈胶囊 → 紫晶质瓶 → 晶体外壳 → 紫晶零件
+[2026-08-22 07:07:35.500] 🚫 缺货排除：无
+[2026-08-22 07:07:35.500] 🎯 保留量已满足：无
+[2026-08-22 07:07:35.500] ⛔ 用户排除：无
+[2026-08-22 07:07:35.500] 🧰 保留规则：无（全部售卖）
+[2026-08-22 07:07:35.725] 👤 售卖干员沿用：安塔尔（难民暂居处）
+[2026-08-22 07:07:38.397] 📦 已切换货品：柑实罐头（难民暂居处）
+[2026-08-22 07:07:42.275] ✅ 已完成交易
+[2026-08-22 07:07:42.579] 📭 当前货品缺货，继续尝试下一货品
+[2026-08-22 07:07:42.636] 🚫 已确认缺货并排除：柑实罐头（难民暂居处）
+[2026-08-22 07:07:45.183] 📦 已切换货品：精选荞愈胶囊（难民暂居处）
+[2026-08-22 07:07:48.852] ✅ 已完成交易
+[2026-08-22 07:07:49.368] 👤 售后生产干员沿用：安塔尔（难民暂居处）
+[2026-08-22 07:07:51.912] 📋 基建前站当前计划
+[2026-08-22 07:07:51.912] 👤 售卖干员目标：伊冯；售后生产派驻目标：伊冯
+[2026-08-22 07:07:51.912] 📦 售卖顺序：精选荞愈胶囊 → 高容谷地电池 → 优质柑实罐头 → 低容谷地电池 → 铁制零件
+[2026-08-22 07:07:51.912] 🚫 缺货排除：柑实罐头、精选柑实罐头、中容谷地电池、优质荞愈胶囊
+[2026-08-22 07:07:51.912] 🎯 保留量已满足：无
+[2026-08-22 07:07:51.912] ⛔ 用户排除：无
+[2026-08-22 07:07:51.912] 🧰 保留规则：无（全部售卖）
+[2026-08-22 07:07:52.137] 👤 售卖干员沿用：伊冯（基建前站）
+[2026-08-22 07:07:54.603] 📦 已切换货品：精选荞愈胶囊（基建前站）
+[2026-08-22 07:07:58.371] ✅ 已完成交易
+[2026-08-22 07:07:58.877] 👤 售后生产干员沿用：伊冯（基建前站）
+[2026-08-22 07:08:01.323] 📋 重建指挥部当前计划
+[2026-08-22 07:08:01.323] 👤 售卖干员目标：骏卫；售后生产派驻目标：佩丽卡
+[2026-08-22 07:08:01.323] 📦 售卖顺序：精选荞愈胶囊 → 高容谷地电池 → 优质柑实罐头 → 钢制零件
+[2026-08-22 07:08:01.323] 🚫 缺货排除：柑实罐头、精选柑实罐头、中容谷地电池、优质荞愈胶囊
+[2026-08-22 07:08:01.323] 🎯 保留量已满足：无
+[2026-08-22 07:08:01.323] ⛔ 用户排除：无
+[2026-08-22 07:08:01.323] 🧰 保留规则：无（全部售卖）
+[2026-08-22 07:08:05.157] 👤 售卖干员已切换：骏卫（重建指挥部）
+[2026-08-22 07:08:07.630] 📦 已切换货品：精选荞愈胶囊（重建指挥部）
+[2026-08-22 07:08:11.498] ✅ 已完成交易
+[2026-08-22 07:08:11.807] 📭 当前货品缺货，继续尝试下一货品
+[2026-08-22 07:08:11.861] 🚫 已确认缺货并排除：精选荞愈胶囊（重建指挥部）
+[2026-08-22 07:08:14.181] 📦 已切换货品：高容谷地电池（重建指挥部）
+[2026-08-22 07:08:17.880] ✅ 已完成交易
+[2026-08-22 07:08:25.329] 👤 售后生产干员已切换：佩丽卡（重建指挥部）
+[2026-08-22 07:08:27.591] 🏁 售卖任务已完成
+[2026-08-22 07:08:27.659] 任务完成: 🛒售卖产品
+[2026-08-22 07:08:27.707] 任务开始: 货物装箱
+[2026-08-22 07:10:05.939] 任务完成: 货物装箱
+[2026-08-22 07:10:05.994] 任务开始: 🚚转交委托
+[2026-08-22 07:10:20.551] 任务完成: 🚚转交委托
+[2026-08-22 07:10:20.601] 任务开始: 🏪购买稳定物资
+[2026-08-22 07:10:20.663] 现在游戏时间是周六，根据执行周期跳过任务
+[2026-08-22 07:10:20.728] 任务完成: 🏪购买稳定物资
+[2026-08-22 07:10:20.777] 任务开始: 📦自动囤货
+[2026-08-22 07:10:22.135] 正在前往: 四号谷地
+[2026-08-22 07:10:26.596] 识别完成，共识别到 12 个商品
+[2026-08-22 07:10:26.698] 「低价购买」源石树幼苗货组 (价格 617)
+[2026-08-22 07:10:30.036] 购买成功
+[2026-08-22 07:10:30.087] 正在前往: 武陵
+[2026-08-22 07:10:38.694] 识别完成，共识别到 11 个商品
+[2026-08-22 07:10:38.786] 「低价购买」清波筏货组 (价格 953)
+[2026-08-22 07:10:41.992] 购买成功
+[2026-08-22 07:10:42.041] 任务完成: 📦自动囤货
+[2026-08-22 07:10:42.091] 任务开始: 🎁基建收取
+[2026-08-22 07:11:07.899] 获得 高级认知载体 ×3
+[2026-08-22 07:11:07.974] 获得 塔罗斯菌 ×2
+[2026-08-22 07:11:08.039] 获得 武器检查套组 ×6
+[2026-08-22 07:11:12.467] 获得 信用 ×20
+[2026-08-22 07:11:14.376] 任务完成: 🎁基建收取
+[2026-08-22 07:11:14.429] 任务开始: 🤝拜访好友
+[2026-08-22 07:11:26.791] 开始拜访好友
+[2026-08-22 07:12:09.352] 助力次数已满；列表改为只认可线索交换好友
+[31m[2026-08-22 07:12:11.025][ERR][Px9064][Tx32757][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __GrayCancelButtonType2Icon templ size is too large [image=[5,1214,16]] [templ=[25,25,16]] [0m
+[31m[2026-08-22 07:12:11.037][ERR][Px9064][Tx32757][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __GrayCancelButtonType2HoverIcon templ size is too large [image=[5,1214,16]] [templ=[25,25,16]] [0m
+[31m[2026-08-22 07:12:42.359][ERR][Px9064][Tx32757][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __GrayCancelButtonType2Icon templ size is too large [image=[5,1214,16]] [templ=[25,25,16]] [0m
+[31m[2026-08-22 07:12:42.371][ERR][Px9064][Tx32757][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __GrayCancelButtonType2HoverIcon templ size is too large [image=[5,1214,16]] [templ=[25,25,16]] [0m
+[2026-08-22 07:13:29.192] 线索交换次数已满，已关闭线索交换检查与领取
+[2026-08-22 07:13:29.294] 拜访好友次数已满，停止拜访
+[2026-08-22 07:13:29.361] 任务完成: 🤝拜访好友
+[2026-08-22 07:13:29.405] 任务开始: 🎁基建任务
+[31m[2026-08-22 07:14:21.770][ERR][Px9064][Tx32757][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __WhiteConfirmButtonType1IconStable templ size is too large [image=[5,81,16]] [templ=[26,26,16]] [0m
+[31m[2026-08-22 07:14:21.775][ERR][Px9064][Tx32757][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __WhiteConfirmButtonType1IconHover templ size is too large [image=[5,81,16]] [templ=[26,26,16]] [0m
+[31m[2026-08-22 07:14:22.169][ERR][Px9064][Tx32757][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __WhiteConfirmButtonType2IconStable templ size is too large [image=[5,81,16]] [templ=[26,26,16]] [0m
+[31m[2026-08-22 07:14:22.175][ERR][Px9064][Tx32757][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __WhiteConfirmButtonType2IconHover templ size is too large [image=[5,81,16]] [templ=[26,26,16]] [0m
+[31m[2026-08-22 07:14:28.580][ERR][Px9064][Tx32757][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __WhiteConfirmButtonType1IconStable templ size is too large [image=[5,79,16]] [templ=[26,26,16]] [0m
+[31m[2026-08-22 07:14:28.581][ERR][Px9064][Tx32757][TemplateMatcher.cpp][L54][MaaNS::VisionNS::TemplateMatcher::template_match] __WhiteConfirmButtonType1IconHover templ size is too large [image=[5,79,16]] [templ=[26,26,16]] [0m
+[2026-08-22 07:14:30.376] 任务完成: 🎁基建任务
+[2026-08-22 07:14:30.432] 任务开始: 🛍️信用点购物
+[2026-08-22 07:14:46.924] 获得 信用 ×300
+[2026-08-22 07:14:53.842] 获得 嵌晶玉 ×25
+[2026-08-22 07:14:57.848] 刷新商品
+[2026-08-22 07:15:03.439] 刷新商品
+[2026-08-22 07:15:10.968] 获得 武库配额 ×20
+[2026-08-22 07:15:14.618] 信用点不足
+[2026-08-22 07:15:14.827] 任务完成: 🛍️信用点购物
+[2026-08-22 07:15:14.881] 任务开始: 💊应急理智加强剂
+[2026-08-22 07:15:14.929] 即将进入珍贵物品标签页
+[2026-08-22 07:15:33.262] 没有应急理智加强剂，结束任务
+[2026-08-22 07:15:33.471] 任务完成: 💊应急理智加强剂
+[2026-08-22 07:15:33.521] 任务开始: ⚔️协议空间 1
+[2026-08-22 07:15:33.583] 现在游戏时间是周六，根据执行周期跳过任务
+[2026-08-22 07:15:33.648] 任务完成: ⚔️协议空间 1
+[2026-08-22 07:15:33.700] 任务开始: ⚔️协议空间 2
+[2026-08-22 07:15:33.750] 现在游戏时间是周六，根据执行周期跳过任务
+[2026-08-22 07:15:33.811] 任务完成: ⚔️协议空间 2
+[2026-08-22 07:15:33.859] 任务开始: ⚔️协议空间 3
+[2026-08-22 07:15:33.936] 现在游戏时间是周六，根据执行周期跳过任务
+[2026-08-22 07:15:33.983] 任务完成: ⚔️协议空间 3
+[2026-08-22 07:15:34.029] 任务开始: ⚔️协议空间 4
+[2026-08-22 07:15:34.089] 现在游戏时间是周六，根据执行周期跳过任务
+[2026-08-22 07:15:34.142] 任务完成: ⚔️协议空间 4
+[2026-08-22 07:15:34.201] 任务开始: ⚔️协议空间 5
+[2026-08-22 07:15:34.266] 现在游戏时间是周六，根据执行周期跳过任务
+[2026-08-22 07:15:34.317] 任务完成: ⚔️协议空间 5
+[2026-08-22 07:15:34.361] 任务开始: ⚔️协议空间 6
+[2026-08-22 07:15:52.905] 选择关卡等级
+[2026-08-22 07:15:53.360] 选择自选奖励
+[2026-08-22 07:15:54.957] 当前理智 220/360
+[2026-08-22 07:15:55.267] 进入协议空间
+[2026-08-22 07:15:58.714] 确认进入协议空间
+[2026-08-22 07:16:09.437] 进入协议空间成功
+[2026-08-22 07:16:12.181] 开始行动
+[2026-08-22 07:16:12.415] 等待战斗开始
+[2026-08-22 07:16:17.978] 进入战斗场景
+[2026-08-22 07:16:18.058] 等待战斗开始
+[2026-08-22 07:16:18.125] 战斗已开始
+[2026-08-22 07:16:18.279] 共 4 名干员参战
+[2026-08-22 07:16:18.342] 开始战斗，尝试锁定目标
+[2026-08-22 07:16:18.835] 触发干员1技能
+[2026-08-22 07:16:19.531] 触发连携技
+[2026-08-22 07:16:19.639] 触发干员1终结技
+[2026-08-22 07:16:21.925] 触发连携技
+[2026-08-22 07:16:22.108] 触发连携技
+[2026-08-22 07:16:22.356] 触发干员2终结技
+[2026-08-22 07:16:24.035] 靠近敌人
+[2026-08-22 07:16:24.294] 触发干员3终结技
+[2026-08-22 07:16:26.837] 触发干员4终结技
+[2026-08-22 07:16:29.924] 找不到敌人，尝试锁定目标
+[2026-08-22 07:16:30.027] 靠近敌人
+[2026-08-22 07:16:30.134] 触发干员2终结技
+[2026-08-22 07:16:32.500] 敌人正在蓄力
+[2026-08-22 07:16:32.580] 触发干员2技能
+[2026-08-22 07:16:32.976] 触发连携技
+[2026-08-22 07:16:33.143] 找不到敌人，尝试锁定目标
+[2026-08-22 07:16:33.204] 触发连携技
+[2026-08-22 07:16:33.409] 触发连携技
+[2026-08-22 07:16:33.586] 触发连携技
+[2026-08-22 07:16:33.762] 触发连携技
+[2026-08-22 07:16:33.926] 触发连携技
+[2026-08-22 07:16:34.103] 触发连携技
+[2026-08-22 07:16:34.269] 触发连携技
+[2026-08-22 07:16:34.440] 触发连携技
+[2026-08-22 07:16:34.601] 触发连携技
+[2026-08-22 07:16:35.168] 靠近敌人
+[2026-08-22 07:16:35.347] 触发干员3技能
+[2026-08-22 07:16:38.962] 触发闪避
+[2026-08-22 07:16:40.660] 敌人正在蓄力
+[2026-08-22 07:16:40.720] 触发干员4技能
+[2026-08-22 07:16:42.371] 触发连携技
+[2026-08-22 07:16:43.708] 触发连携技
+[2026-08-22 07:16:43.931] 靠近敌人
+[2026-08-22 07:16:47.030] 触发干员1技能
+[2026-08-22 07:16:47.332] 触发干员2技能
+[2026-08-22 07:16:48.065] 触发连携技
+[2026-08-22 07:16:49.932] 靠近敌人
+[2026-08-22 07:16:53.154] 触发干员3技能
+[2026-08-22 07:16:55.014] 靠近敌人
+[2026-08-22 07:16:58.402] 找不到敌人，尝试锁定目标
+[2026-08-22 07:17:00.286] 退出战斗场景
+[2026-08-22 07:17:04.117] 找不到退出点
+[2026-08-22 07:17:04.687] 找不到退出点
+[2026-08-22 07:17:05.311] 找不到退出点
+[2026-08-22 07:17:05.505] 向退出点移动
+[2026-08-22 07:17:08.014] 找不到退出点
+[2026-08-22 07:17:08.232] 向退出点移动
+[2026-08-22 07:17:10.836] 找不到退出点
+[2026-08-22 07:17:11.059] 向退出点移动
+[2026-08-22 07:17:12.250] 向退出点移动
+[2026-08-22 07:17:13.318] 向退出点移动
+[2026-08-22 07:17:14.381] 向退出点移动
+[2026-08-22 07:17:15.884] 打开奖励
+[2026-08-22 07:17:17.446] 当前理智 220/360
+[2026-08-22 07:17:18.102] 尝试使用理智消耗许可
+[2026-08-22 07:17:18.610] 确认领取奖励
+[2026-08-22 07:17:21.848] 获得 行动资历 ×960
+[2026-08-22 07:17:21.914] 获得 重型强固模具 ×28
+[2026-08-22 07:17:22.868] 理智不足，结束任务
+[2026-08-22 07:17:50.129] 任务完成: ⚔️协议空间 6
+[2026-08-22 07:17:50.224] 任务开始: ⚔️协议空间 7
+[2026-08-22 07:17:50.305] 现在游戏时间是周六，根据执行周期跳过任务
+[2026-08-22 07:17:50.367] 任务完成: ⚔️协议空间 7
+[2026-08-22 07:17:50.426] 任务开始: 📅日常奖励领取
+[2026-08-22 07:17:50.481] 开始领取邮件奖励
+[2026-08-22 07:17:51.216] 尝试打开邮件
+[2026-08-22 07:17:52.361] 已进入邮件界面
+[2026-08-22 07:17:54.723] 获取邮件奖励
+[2026-08-22 07:17:55.973] 开始领取每日任务奖励
+[2026-08-22 07:18:13.110] 获得 行动资历 ×1150
+[2026-08-22 07:18:13.183] 获得 通行证经验 ×2000
+[2026-08-22 07:18:13.257] 获得 嵌晶玉 ×200
+[2026-08-22 07:18:13.316] 获得 应急理智加强剂 ×1
+[2026-08-22 07:18:13.402] 获得 折金票 ×9000
+[2026-08-22 07:18:13.461] 获得 高级作战记录 ×1
+[2026-08-22 07:18:13.518] 获得 协议棱柱 ×5
+[2026-08-22 07:18:13.570] 获得 武器检查套组 ×2
+[2026-08-22 07:18:16.179] 开始领取「我转交的委托」奖励
+[2026-08-22 07:18:36.445] 获得 武陵调度券 ×209000
+[2026-08-22 07:18:36.538] 获得 谷地调度券 ×249000
+[2026-08-22 07:18:40.777] 领取「我转交的委托」奖励完成
+[2026-08-22 07:18:40.996] 开始领取通行证奖励
+[2026-08-22 07:18:59.505] 开始领取活动奖励
+[2026-08-22 07:19:16.516] 跳过未支持的活动
+[31m[2026-08-22 07:19:17.097][ERR][Px9064][Tx32757][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-22 07:19:17.115][ERR][Px9064][Tx32757][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-22 07:19:17.133][ERR][Px9064][Tx32757][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-22 07:19:17.151][ERR][Px9064][Tx32757][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-22 07:19:17.169][ERR][Px9064][Tx32757][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-22 07:19:17.187][ERR][Px9064][Tx32757][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-22 07:19:17.205][ERR][Px9064][Tx32757][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-22 07:19:17.224][ERR][Px9064][Tx32757][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-22 07:19:17.242][ERR][Px9064][Tx32757][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-22 07:19:17.260][ERR][Px9064][Tx32757][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-22 07:19:17.279][ERR][Px9064][Tx32757][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-22 07:19:17.297][ERR][Px9064][Tx32757][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-22 07:19:17.315][ERR][Px9064][Tx32757][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-22 07:19:17.333][ERR][Px9064][Tx32757][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-22 07:19:17.352][ERR][Px9064][Tx32757][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-22 07:19:17.369][ERR][Px9064][Tx32757][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-22 07:19:17.388][ERR][Px9064][Tx32757][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-22 07:19:17.406][ERR][Px9064][Tx32757][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-22 07:19:17.424][ERR][Px9064][Tx32757][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-22 07:19:17.443][ERR][Px9064][Tx32757][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-22 07:19:17.460][ERR][Px9064][Tx32757][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-22 07:19:17.479][ERR][Px9064][Tx32757][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-22 07:19:17.498][ERR][Px9064][Tx32757][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-22 07:19:17.515][ERR][Px9064][Tx32757][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-22 07:19:17.534][ERR][Px9064][Tx32757][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-22 07:19:17.551][ERR][Px9064][Tx32757][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-22 07:19:17.570][ERR][Px9064][Tx32757][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-22 07:19:17.588][ERR][Px9064][Tx32757][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-22 07:19:17.606][ERR][Px9064][Tx32757][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-22 07:19:17.624][ERR][Px9064][Tx32757][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-22 07:19:17.642][ERR][Px9064][Tx32757][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-22 07:19:17.660][ERR][Px9064][Tx32757][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-22 07:19:17.679][ERR][Px9064][Tx32757][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[31m[2026-08-22 07:19:17.697][ERR][Px9064][Tx32757][RuntimeCache.cpp][L66][MaaNS::RuntimeCache::set_reco_detail] uid is invalid [0m
+[2026-08-22 07:19:23.352] 获得 嵌晶玉 ×150
+[2026-08-22 07:19:23.441] 获得 协议棱柱组 ×8
+[2026-08-22 07:19:27.351] 领取活动奖励结束
+[2026-08-22 07:19:27.788] 任务完成: 📅日常奖励领取
+[2026-08-22 07:19:27.868] 正在连接窗口... Endfield
+[2026-08-22 07:19:27.920] 窗口连接成功: Endfield
+[2026-08-22 07:19:28.361] 任务开始: ⛔ 结束进程
+[2026-08-22 07:19:28.588] 已通过快捷键开始任务：
+[2026-08-22 07:19:29.013] 任务完成: ⛔ 结束进程
+[2026-08-22 07:19:29.063] 任务开始: ⛔ 结束进程
+[2026-08-22 07:19:29.253] 任务完成: ⛔ 结束进程
+[2026-08-22 07:19:29.300] 任务开始: 停止任务
+[2026-08-22 07:19:29.344] 任务完成: 停止任务
+[2026-08-22 07:19:29.396] 任务开始: 停止任务
+[2026-08-22 07:19:29.446] 任务完成: 停止任务
+[0822/071929.732:ERROR:ui\gfx\win\window_impl.cc:172] Failed to unregister class Chrome_WidgetWin_0. Error = 1412

@@ -1,10 +1,12 @@
+@echo off
 REM  设置代码页为UTF-8，启用延迟扩展
 chcp 65001
 setlocal enabledelayedexpansion
 REM  切换到主文件根目录
 cd /d "%~dp0"
 cd ..\..\
-REM -----------------------------------------Loop计算------------------------------------------------------
+echo [%date% %time%] --------------------------------------BGIAutoRun.bat--------------------------------------------------------
+echo [%date% %time%] -----------------------------------------Loop计算------------------------------------------------------
 REM 读judge文件，赋值给LX。文件5行内容的意义如下：
 REM L1 0-囤 1-刷
 REM L2 1-A 2-B 3-C
@@ -34,14 +36,16 @@ set "N3=1"
 set "N4=无错误"
 set "T5=囤"
 for /f "tokens=1" %%a in ("!date!") do set "T6=%%a"
-REM 输出到调试txt，共4行，如果运行过了则再打印到第5行,两个break：不知道为什么有时候首个break会不清空文件
+
+echo [%date% %time%]  输出到调试txt，共4行，如果运行过了则再打印到第5行,两个break：不知道为什么有时候首个break会不清空文件
 break > ".\logs\BGI调试日志.log"
 break > ".\logs\BGI调试日志.log"
 echo 上次运行日期L6==!L6! >> ".\logs\BGI调试日志.log"
 echo 今天运行日期T6==!T6! >> ".\logs\BGI调试日志.log"
 echo 循环数信息：L1,L2,L3==!L1!,!L2!,!L3! >> ".\logs\BGI调试日志.log"
 echo 循环数计算结果：上一次循环数（LP）是：!LP!，本次运行的循环数T5是：!T5! >> ".\logs\BGI调试日志.log"
-REM 进行循环数计算并赋给T5
+
+echo [%date% %time%]  进行循环数计算并赋给T5
 if "!T6!" == "!L6!" (
 	set T5=!LP!
 	echo T6（!T6!）==L6（!L6!），今天已经计算过了~ >> ".\logs\BGI调试日志.log"
@@ -88,9 +92,11 @@ if "!T6!" == "!L6!" (
 	echo !T5! >> ".\config\BGIjudge.txt"
 	echo !T6! >> ".\config\BGIjudge.txt"
 )
-REM 导入BGI路径----------------------------------------------------------------------------------------
+
+echo [%date% %time%]  导入BGI路径----------------------------------------------------------------------------------------
 for /f "tokens=2 delims==" %%a in ('findstr /b "path_bgi=" ".\config\paths.ini"') do set "PATH_BGI=%%a"
-REM 根据T5的值决定启动哪一个BGI预设
+
+echo [%date% %time%]  根据T5的值（!T5!）决定启动哪一个BGI预设
 if "!T5!" == "囤" (
 echo !date!,!time!运行了配置---囤体力 >> ".\logs\BGI循环日志.log"
 "!PATH_BGI!" --startOneDragon 循环囤体力
@@ -106,6 +112,7 @@ echo !date!,!time!运行了配置---循环C >> ".\logs\BGI循环日志.log"
 ) else (echo [ERROR]!date!,!time!:主程序执行出错，缺少可用数值的L1>> ".\logs\BGI循环日志.log"
 	set "T6=上一次主程序执行出错，算作今日未运行，最好重开这个bat文件"
 )
+echo [%date% %time%] ------------------------------------------------------------------------------------------------------------
 
 
 

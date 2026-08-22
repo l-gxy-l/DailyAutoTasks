@@ -1,5 +1,6 @@
-REM @echo off
+@echo off
 chcp 65001
+echo [%date% %time%] ----------------------自动完成日常.bat------------------------------
 echo [%date% %time%] 设置代码页为UTF-8，启用延迟扩展，检测管理员权限
 setlocal enabledelayedexpansion
 
@@ -71,4 +72,4 @@ if %errorlevel% equ 1 (
 ) else (
 	echo %date% %time% 错误码: %errorlevel%。4是无效参数，5是参数不足。 >> .\logs\音频日志.log
 )
-echo [%date% %time%] -----------------------任务结束------------------------------
+echo [%date% %time%] --------------------------------------------------------------------
