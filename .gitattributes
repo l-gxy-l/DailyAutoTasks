@@ -1,13 +1,7 @@
 # 文件夹（/ export-ignore）--------------------------
-测试/ export-ignore
-audioMute/ export-ignore
-.github/ export-ignore
-logs/ export-ignore
+测试/ 
+audioMute/ 
+.github/ 
+logs/ 
 #文件（ export-ignore）------------------------------
-.gitattributes export-ignore
-*.log export-ignore
-*.blg export-ignore
-desktop.ini export-ignore
-BGI调试日志.log export-ignore
-BGI循环日志.log export-ignore
-音频日志.log export-ignore
+desktop.ini
