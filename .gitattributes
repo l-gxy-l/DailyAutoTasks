@@ -8,3 +8,6 @@ logs/ export-ignore
 *.log export-ignore
 *.blg export-ignore
 desktop.ini export-ignore
+BGI调试日志.log export-ignore
+BGI循环日志.log export-ignore
+音频日志.log export-ignore
