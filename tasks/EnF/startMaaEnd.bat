@@ -12,5 +12,6 @@ if %errorlevel% neq 0 (
     pause
     exit /b
 )
-call "!PATH_MAAEND!" --autostart -i="Normal"
+call "!PATH_MAAEND!" --autostart -i="Normal" 2>&1 | findstr /i "ERROR ERR 错误 失败"
 echo [%date% %time%] --------------------------------------------------------------------
+echo=

@@ -24,9 +24,9 @@ set "logmanlog=.\logs\主脚本运行日志\%D%-性能日志"
 REM 创建带 BOM 的 UTF-8 日志文件，解决中文乱码
 break > "%mainlog%"
 powershell -Command "$utf8 = New-Object System.Text.UTF8Encoding $true; [System.IO.File]::WriteAllText('%mainlog%', '', $utf8)"
-echo [%date% %time%] ---------------- 前置任务已完成 ------------------------- >> "%mainlog%"
-
+echo [%date% %time%] -------------------------------- 前置任务已完成 ---------------------------------------- >> "%mainlog%"
 echo [%date% %time%] ================ 3. 配置 logman 采集器 ================== >> "%mainlog%"
+echo (DEBUG: 3. 配置 logman 采集器)
 echo [%date% %time%] 配置 logman 采集器 >> "%mainlog%"
 set "logmanName=DailyTaskPerfCollector" >> "%mainlog%"
 echo [%date% %time%] 先删除可能重名的旧采集器 >> "%mainlog%"
@@ -36,17 +36,22 @@ echo [%date% %time%] 创建新的计数器采集器（记录内存百分比和�
 logman create counter "%logmanName%" -o "%logmanlog%" -f bincirc -max 500 -si 30 -v mmddhhmm -c "\Memory\%% Committed Bytes In Use" "\Memory\Available MBytes" "\Processor(_Total)\%% Processor Time" >> "%mainlog%"
 
 echo [%date% %time%] ================ 4. 启动性能日志记录 ==================== >> "%mainlog%"
+echo (DEBUG: 4. 启动性能日志记录)
 echo [%date% %time%] 启动性能日志记录 >> "%mainlog%"
 logman start "%logmanName%" >> "%mainlog%"
 echo [%date% %time%] 性能监控已启动，数据保存到: %logmanlog%.blg >> "%mainlog%"
 
 echo [%date% %time%] ================ 5. 运行自动完成日常.bat ================ >> "%mainlog%"
+echo (DEBUG: 5. 运行自动完成日常.bat)
 echo [%date% %time%] 自动完成日常.bat开始执行 >> "%mainlog%"
 call ".\自动完成日常.bat" >> "%mainlog%" 2>&1
 echo [%date% %time%] 自动完成日常.bat执行完毕 >> "%mainlog%"
+echo DEBUG: 已从自动完成日常.bat返回
 
 echo [%date% %time%] ================ 6. 停止并删除性能采集器 ================ >> "%mainlog%"
+echo (DEBUG: 6. 停止并删除性能采集器)
 echo [%date% %time%] 停止性能采集器 >> "%mainlog%"
+taskkill /f /im adb.exe
 logman stop "%logmanName%" >> "%mainlog%"
 logman delete "%logmanName%" >> "%mainlog%"
 echo [%date% %time%] 性能监控已停止。 >> "%mainlog%"

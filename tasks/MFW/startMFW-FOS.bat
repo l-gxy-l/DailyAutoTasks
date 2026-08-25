@@ -12,16 +12,18 @@ for /f "tokens=1" %%a in (.\config\MFWjudge.txt) do (
 )
 echo [%date% %time%] 上一次运行日期 L1 ：!L1!
 for /f "tokens=1" %%a in ("!date!") do set "D=%%a"
-echo [%date% %time%] 今天日期 D 是：!L1!
+echo [%date% %time%] 今天日期 D 是：!D!
 break > ".\config\MFWjudge.txt"
 echo !D! > ".\config\MFWjudge.txt"
-
 echo [%date% %time%] 执行启动任务
 for /f "tokens=2 delims==" %%a in ('findstr /b "path_fos=" ".\config\paths.ini"') do set "PATH_FOS=%%a"
 if "!D!" == "!L1!" (
+	echo 今日已运行,跳过执行
 	echo 今日已运行，上一次（L1）：!L1!，今天（D）：!D! >> ".\config\MFWjudge.txt"
 ) else (
+	echo 开始执行...
 	taskkill /f /im adb.exe
-	call "" "!PATH_FOS!" --direct-run
+	start "" "!PATH_FOS!" --direct-run
 )
 echo [%date% %time%] --------------------------------------------------------------------
+echo=
