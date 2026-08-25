@@ -7,3 +7,4 @@ logs/ export-ignore
 .gitattributes export-ignore
 *.log export-ignore
 *.blg export-ignore
+desktop.ini export-ignore
