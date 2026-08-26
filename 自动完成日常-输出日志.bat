@@ -51,8 +51,12 @@ echo DEBUG: 已从自动完成日常.bat返回
 echo [%date% %time%] ================ 6. 停止并删除性能采集器 ================ >> "%mainlog%"
 echo (DEBUG: 6. 停止并删除性能采集器)
 echo [%date% %time%] 停止性能采集器 >> "%mainlog%"
+echo （最后保险）清除日志文件占用
 taskkill /f /im adb.exe
+taskkill /f /im MuMuPlayerService.exe
 logman stop "%logmanName%" >> "%mainlog%"
+echo （最后保险）强制停止
+logman stop "%logmanName%"
 logman delete "%logmanName%" >> "%mainlog%"
 echo [%date% %time%] 性能监控已停止。 >> "%mainlog%"
 pause
