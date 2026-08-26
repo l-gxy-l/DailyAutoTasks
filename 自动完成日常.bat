@@ -55,8 +55,10 @@ taskkill /f /im "MuMuPlayer.exe"
 echo=
 echo [%date% %time%] ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~HSR任务~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 for /f "tokens=2 delims==" %%a in ('findstr /b "path_march7th=" ".\config\paths.ini"') do set "PATH_MARCH7TH=%%a"
+echo [%date% %time%] 异步运行，一段时间后开始检测HSR关闭
+start "" ".\tasks\HSR\endHSR.bat" >nul 2>&1
+echo [%date% %time%] 启动M7th
 call "!PATH_MARCH7TH!" -S main -e
-call ".\tasks\HSR\endHSR.bat"
 echo=
 echo [%date% %time%] ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~EnF任务~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 call .\tasks\EnF\startMaaEnd.bat
@@ -76,7 +78,7 @@ set "fos_wait=0"
 timeout /t 10 /nobreak >nul
 set /a fos_wait+=10
 tasklist /fi "imagename eq FOS.exe" 2>nul | find /i "FOS.exe" >nul
-if %errorlevel% equ 0 (
+if !errorlevel! equ 0 (
     if !fos_wait! geq 1800 (
         echo [%date% %time%] FOS等待超时，强制结束相关进程...
         taskkill /f /im FOS.exe >nul 2>&1
@@ -87,8 +89,10 @@ if %errorlevel% equ 0 (
 )
 :after_fos
 echo [%date% %time%] FOS已关闭，继续执行...
+echo [%date% %time%] 解除日志占用中...
 echo [%date% %time%] 关mumu模拟器
 taskkill /f /im "MuMuPlayer.exe"
+taskkill /f /im MuMuPlayerService.exe
 echo [%date% %time%] 释放模拟器adb
 taskkill /f /im adb.exe
 echo=
