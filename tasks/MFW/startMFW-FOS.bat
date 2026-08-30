@@ -21,9 +21,10 @@ if "!D!" == "!L1!" (
 	echo 今日已运行,跳过执行
 	echo 今日已运行，上一次（L1）：!L1!，今天（D）：!D! >> ".\config\MFWjudge.txt"
 ) else (
-	echo 开始执行...
+	echo 关adb
 	taskkill /f /im adb.exe
-	start "" "!PATH_FOS!" --direct-run
+	echo 开始执行...
+	start "" "!PATH_FOS!" --direct-run >nul 2>&1
 )
 echo [%date% %time%] --------------------------------------------------------------------
 echo=
