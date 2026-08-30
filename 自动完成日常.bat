@@ -15,13 +15,13 @@ echo [%date% %time%] ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~前系统操作
 echo [%date% %time%] 关闭系统声音
 call .\tools\audioMute.exe mute
 if %errorlevel% equ 0 (
-    echo %date% %time% 已静音 >> .\logs\音频日志.log
+    echo %date% %time% 已静音
 	echo [%date% %time%] 已静音
 ) else if %errorlevel% equ 2 (
-    echo %date% %time% 静音失败，错误码: %errorlevel% >> .\logs\音频日志.log
+    echo %date% %time% 静音失败，错误码: %errorlevel%
 	echo [%date% %time%] 静音失败，错误码: %errorlevel%
 ) else (
-	echo %date% %time% 错误码: %errorlevel%。4是无效参数，5是参数不足。 >> .\logs\音频日志.log
+	echo %date% %time% 错误码: %errorlevel%。4是无效参数，5是参数不足。
 	echo [%date% %time%] 错误码: %errorlevel%。4是无效参数，5是参数不足。
 )
 echo=
@@ -29,7 +29,7 @@ echo [%date% %time%] 调亮度
 WMIC /NAMESPACE:\\root\wmi PATH WmiMonitorBrightnessMethods WHERE "Active=TRUE" CALL WmiSetBrightness Brightness=1 Timeout=0
 echo=
 echo [%date% %time%] ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~领取时长~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-start .\tools\GIcloud.url
+start /min .\tools\GIcloud.url >nul 2>&1
 echo=
 echo [%date% %time%] ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MAA任务~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 echo [%date% %time%] 开模拟器
@@ -43,7 +43,7 @@ taskkill /IM msedge.exe 2>&1 | findstr /i "SUCCESS"
 echo=
 echo [%date% %time%] 启动MAA
 for /f "tokens=2 delims==" %%a in ('findstr /b "path_maa=" ".\config\paths.ini"') do set "PATH_MAA=%%a"
-start "" "!PATH_MAA!" >nul 2>&1
+start /min "" "!PATH_MAA!" >nul 2>&1
 timeout /t 30
 echo=
 echo [%date% %time%] ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~BGI任务~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -56,32 +56,43 @@ echo=
 echo [%date% %time%] ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~HSR任务~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 for /f "tokens=2 delims==" %%a in ('findstr /b "path_march7th=" ".\config\paths.ini"') do set "PATH_MARCH7TH=%%a"
 echo [%date% %time%] 异步运行，一段时间后开始检测HSR关闭
-start "" ".\tasks\HSR\endHSR.bat" >nul 2>&1
+start /min "" ".\tasks\HSR\endHSR.bat"
 echo [%date% %time%] 启动M7th
 call "!PATH_MARCH7TH!" -S main -e
+echo=
+echo [%date% %time%] 当前内存使用：
+systeminfo | find "Available Physical Memory"
+echo [%date% %time%] 当前进程数：
+tasklist | find /c /v ""
 echo=
 echo [%date% %time%] ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~EnF任务~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 call .\tasks\EnF\startMaaEnd.bat
 call .\tasks\EnF\endArkE.bat
 echo=
 echo [%date% %time%] ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MFW任务~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+echo [%date% %time%] 开模拟器
+taskkill /f /im adb.exe
+for /f "tokens=2 delims==" %%a in ('findstr /b "path_mumu=" ".\config\paths.ini"') do set "PATH_MUMU=%%a"
+start "" "!PATH_MUMU!"  >nul 2>&1
+timeout /t 25
+echo=
 echo [%date% %time%] 启动FOS,同步启动会导致cmd被FOS一直占用，bat内部采取异步启动
 call .\tasks\MFW\startMFW-FOS.bat
 echo [%date% %time%] 等待模拟器启动
-timeout /t 25
 explorer.exe shell:::{3080F90D-D7AD-11D9-BD98-0000947B0257}
 echo=
 echo [%date% %time%] ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~后系统操作~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 echo [%date% %time%] 等待FOS结束...
 set "fos_wait=0"
 :wait_fos_loop
-timeout /t 10 /nobreak >nul
-set /a fos_wait+=10
+timeout /t 60 /nobreak >nul
+set /a fos_wait+=60
+echo !fos_wait!
 tasklist /fi "imagename eq FOS.exe" 2>nul | find /i "FOS.exe" >nul
 if !errorlevel! equ 0 (
-    if !fos_wait! geq 1800 (
+    if !fos_wait! geq 1200 (
         echo [%date% %time%] FOS等待超时，强制结束相关进程...
-        taskkill /f /im FOS.exe >nul 2>&1
+        taskkill /f /im FOS.exe
 		taskkill /f /im adb.exe
         goto :after_fos
     )
@@ -89,7 +100,6 @@ if !errorlevel! equ 0 (
 )
 :after_fos
 echo [%date% %time%] FOS已关闭，继续执行...
-echo [%date% %time%] 解除日志占用中...
 echo [%date% %time%] 关mumu模拟器
 taskkill /f /im "MuMuPlayer.exe"
 taskkill /f /im MuMuPlayerService.exe
@@ -101,11 +111,10 @@ WMIC /NAMESPACE:\\root\wmi PATH WmiMonitorBrightnessMethods WHERE "Active=TRUE" 
 echo [%date% %time%] 取消系统静音
 call .\tools\audioMute.exe unmute
 if %errorlevel% equ 1 (
-    echo %date% %time% 声音已打开 >> .\logs\音频日志.log
+    echo %date% %time% 声音已打开
 ) else if %errorlevel% equ 3 (
-    echo %date% %time% 打开声音失败，错误码: %errorlevel% >> .\logs\音频日志.log
+    echo %date% %time% 打开声音失败，错误码: %errorlevel%
 ) else (
-	echo %date% %time% 错误码: %errorlevel%。4是无效参数，5是参数不足。 >> .\logs\音频日志.log
+	echo %date% %time% 错误码: %errorlevel%。4是无效参数，5是参数不足。
 )
 echo [%date% %time%] ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-echo=

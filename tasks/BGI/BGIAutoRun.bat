@@ -17,11 +17,11 @@ for /f "tokens=1" %%a in (.\config\BGIjudge.txt) do (
 	if !idx! equ 5 set "LP=%%a"
 	if !idx! equ 6 set "L6=%%a"
 )
-echo L1：!L1!,0-囤 1-刷
-echo L2：!L2!,1-A 2-B 3-C
-echo L3：!L3!,ABAC的分支判断-分支1或2
-echo LP：!LP!,上一次的循环数，即上次运行bat时计算得到的预设名
-echo L6：!L6!,上次运行日期或错误信息
+echo (L1：!L1!,0-囤 1-刷)
+echo (L2：!L2!,1-A 2-B 3-C)
+echo (L3：!L3!,ABAC的分支判断-分支1或2)
+echo (LP：!LP!,上一次的循环数，即上次运行bat时计算得到的预设名)
+echo (L6：!L6!,上次运行日期或错误信息)
 echo=
 echo 计算下一次BGI需要执行的预设
 echo 设置初始值
