@@ -40,7 +40,6 @@ echo=
 echo 上次运行日期L6==!L6!
 echo 今天运行日期T6==!T6!
 echo 循环数信息：L1,L2,L3==!L1!,!L2!,!L3!
-echo 循环数计算结果：上一次循环数（LP）是：!LP!，本次运行的循环数（T5）是：!T5!
 echo=
 echo [%date% %time%]  进行循环数计算并赋给T5
 if "!T6!" == "!L6!" (
@@ -89,7 +88,7 @@ if "!T6!" == "!L6!" (
 	echo !T5! >> ".\config\BGIjudge.txt"
 	echo !T6! >> ".\config\BGIjudge.txt"
 )
-
+echo 循环数计算结果：上一次循环数（LP）是：!LP!，本次运行的循环数（T5）是：!T5!
 echo [%date% %time%]  -------导入BGI路径-------
 for /f "tokens=2 delims==" %%a in ('findstr /b "path_bgi=" ".\config\paths.ini"') do set "PATH_BGI=%%a"
 echo=

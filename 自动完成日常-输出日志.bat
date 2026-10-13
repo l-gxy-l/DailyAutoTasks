@@ -76,7 +76,7 @@ taskkill /f /im MuMuPlayerService.exe
 type "%temp_output%" >> "%mainlog%"
 echo [%date% %time%] 删除临时文件 >> "%mainlog%"
 del "%temp_output%" >> "%mainlog%"
-echo [%date% %time%] 自动完成日常.bat执行完毕 >> "%mainlog%"
+echo=
 echo (DEBUG: 已从自动完成日常.bat返回)
 
 echo [%date% %time%] ================ 6. 停止并删除性能采集器 ================ >> "%mainlog%"
@@ -90,4 +90,5 @@ logman delete "%logmanName%" >> "%mainlog%"
 logman delete "%logmanNameMisc%" >> "%mainlog%"
 
 echo [%date% %time%] 性能监控已停止。 >> "%mainlog%"
+shutdown -s -t 30
 pause

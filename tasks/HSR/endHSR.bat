@@ -25,6 +25,4 @@ echo [%date% %time%] 关闭OCR、M7th
 taskkill /f /im PaddleOCR-json.exe
 taskkill /f /im "March7th Launcher.exe"
 echo [%date% %time%] --------------------------------------------------------------------
-echo test
-timeout /nobreak /t 6
-exit /b
+pause
