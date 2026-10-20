@@ -13,5 +13,9 @@ if %errorlevel% neq 0 (
     exit /b
 )
 call "!PATH_MAAEND!" --autostart -i="Normal" 2>&1 | findstr /i "ERROR ERR 错误 失败"
+echo [%date% %time%] 等待游戏启动
+timeout /t 60 /nobreak >nul
+echo [%date% %time%] 关闭启动器
+taskkill /f /im Games.exe
 echo [%date% %time%] --------------------------------------------------------------------
 echo=
