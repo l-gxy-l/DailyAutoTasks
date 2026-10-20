@@ -74,8 +74,8 @@ taskkill /f /im adb.exe
 taskkill /f /im MuMuPlayer.exe
 taskkill /f /im MuMuPlayerService.exe
 type "%temp_output%" >> "%mainlog%"
-echo [%date% %time%] 删除临时文件 >> "%mainlog%"
-del "%temp_output%" >> "%mainlog%"
+echo [%date% %time%] 删除临时文件%temp_output% >> "%mainlog%"
+del "%temp_output%"
 echo=
 echo (DEBUG: 已从自动完成日常.bat返回)
 

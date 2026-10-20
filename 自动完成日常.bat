@@ -55,6 +55,8 @@ timeout /t 30
 echo=
 echo [%date% %time%] ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~BGI任务~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 explorer.exe shell:::{3080F90D-D7AD-11D9-BD98-0000947B0257}
+echo [%date% %time%] 异步运行，监控 YuanShen.exe 关闭及超时
+start /min "" ".\tasks\BGI\endBGI.bat"
 call .\tasks\BGI\BGIAutoRun.bat
 echo=
 echo [%date% %time%] ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~HSR任务~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -102,7 +104,9 @@ if !errorlevel! equ 0 (
     if !fos_wait! geq 2400 (
         echo [%date% %time%] FOS等待超时，强制结束相关进程...
         taskkill /f /im FOS.exe
+        set "fos_kill_exit_code=!errorlevel!"
 		taskkill /f /im adb.exe
+        powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File ".\tools\send-notification.ps1" -EventName FOSTimeout -WaitSeconds 2400 -TerminationExitCode !fos_kill_exit_code!
         goto :after_fos
     )
     goto :wait_fos_loop

@@ -1,5 +1,5 @@
 @echo off
-chcp 65001
+chcp 65001 >nul
 setlocal enabledelayedexpansion
 echo [%date% %time%] --------------------------endHSR.bat--------------------------------
 echo 等待游戏启动
@@ -15,6 +15,8 @@ if !errorlevel! equ 0 (
     if !starrail_wait! geq 1800 (
         echo [%date% %time%] StarRail.exe 等待超时，强制结束...
         taskkill /f /im StarRail.exe >nul 2>&1
+        set "kill_exit_code=!errorlevel!"
+        powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File "%~dp0..\..\tools\send-notification.ps1" -EventName StarRailTimeout -WaitSeconds 1800 -TerminationExitCode !kill_exit_code!
         goto :after_starrail
     )
     goto :wait_starrail_loop
