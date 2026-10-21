@@ -1,0 +1,9 @@
+# 使用方法：填写软件绝对路径，然后将此文件保存为 paths.ini。
+[path]
+path_bgi=E:\.......................\BetterGI.exe
+path_maaend=E:\.......................\MaaEnd.exe
+path_fos=E:\.......................\FOS.exe
+path_mumu=E:\.......................\MuMuPlayer.exe
+path_maa=E:\.......................\MAA.exe
+path_march7th=E:\.......................\March7th Launcher.exe
+path_endfield=E:\.......................\Endfield.exe
