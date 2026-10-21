@@ -1,0 +1,11 @@
+# 该文件用于设置QQ邮箱通知
+# 使用方法：填写好邮箱和 auth_code，然后改 enabled 为 true ，最后将此文件保存为 mail.ini。
+# auth_code 是 QQ 邮箱设置中生成的 SMTP 授权码，不是 QQ 登录密码。
+[mail]
+enabled=false
+smtp_server=smtp.qq.com
+smtp_port=587
+from=XXX@qq.com
+to=XXX@qq.com
+user=XXX@qq.com
+auth_code=请填写QQ邮箱生成的SMTP授权码

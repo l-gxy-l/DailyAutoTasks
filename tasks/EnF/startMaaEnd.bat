@@ -1,0 +1,21 @@
+@echo off
+chcp 65001
+setlocal enabledelayedexpansion
+cd /d "%~dp0"
+cd ..\..\
+echo [%date% %time%] -----------------------startMaaEnd.bat------------------------------
+for /f "tokens=2 delims==" %%a in ('findstr /b "path_maaend=" ".\config\paths.ini"') do set "PATH_MAAEND=%%a"
+echo [%date% %time%] 禁止maaend出站，阻止自动更新，并检查管理员权限
+netsh advfirewall firewall add rule name="BlockMaaEnd" dir=out program="!PATH_MAAEND!" action=block
+if %errorlevel% neq 0 (
+    echo 添加防火墙规则失败，请检查管理员权限！
+    pause
+    exit /b
+)
+call "!PATH_MAAEND!" --autostart -i="Normal" 2>&1 | findstr /i "ERROR ERR 错误 失败"
+echo [%date% %time%] 等待游戏启动
+timeout /t 60 /nobreak >nul
+echo [%date% %time%] 关闭启动器
+taskkill /f /im Games.exe
+echo [%date% %time%] --------------------------------------------------------------------
+echo=

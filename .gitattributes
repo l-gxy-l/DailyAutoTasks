@@ -1,0 +1,10 @@
+# 发版忽略的文件
+# 文件夹（/ export-ignore）--------------------------
+测试/ export-ignore
+audioMute/ export-ignore
+.github/ export-ignore
+logs/ export-ignore
+icon/ export-ignore
+
+#文件（ export-ignore）------------------------------
+desktop.ini export-ignore
