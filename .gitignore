@@ -6,4 +6,5 @@
 
 # 文件--------------------------------
 /config/mail.ini
+/config/paths.ini
 /desktop.ini
