@@ -5,5 +5,5 @@
 /icon/
 /config/
 # 文件--------------------------------
-/config/mail.ini
+/config/path.ini
 /desktop.ini
