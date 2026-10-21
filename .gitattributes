@@ -1,8 +1,0 @@
-# 文件夹（/ export-ignore）--------------------------
-测试/ 
-audioMute/ 
-.github/ 
-logs/
-icon/
-#文件（ export-ignore）------------------------------
-desktop.ini
